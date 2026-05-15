@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Hong Kong Government - Data Portal"
+        url: "https://data.gov.hk"
+      }
+      description: "The Address Lookup Service API provides a means for users to retrieve address records based on input address information. Users can submit both GET and POST requests to search for address details using free-text format inputs, facilitating easy access to relevant address data."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.als.ogcio.gov.hk/lookup"
+        }
+      ]
+      termsOfService: "https://data.gov.hk/en/terms-and-conditions"
+      title: "Address Lookup Service"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

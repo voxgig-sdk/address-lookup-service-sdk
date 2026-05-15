@@ -1,0 +1,20 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 1
+  metrics: count: method: 2
+
+  entity: search_addresses_get: {
+    path: "/": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: search_addresses_post: {
+    path: "/": {
+      op: create: method: *POST
+    }
+  }
+
+}

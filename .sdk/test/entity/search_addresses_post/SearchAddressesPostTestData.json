@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "search_addresses_post": {
+      "SEARCH_ADDRESSES_POST00": {
+        "n": "s1e",
+        "q": "s1f",
+        "suggested_address": []
+      },
+      "SEARCH_ADDRESSES_POST01": {
+        "n": "s3c",
+        "q": "s3d",
+        "suggested_address": []
+      },
+      "SEARCH_ADDRESSES_POST02": {
+        "n": "s5a",
+        "q": "s5b",
+        "suggested_address": []
+      }
+    }
+  },
+  "new": {
+    "search_addresses_post": {
+      "search_addresses_post_ref01": {
+        "n": "s78",
+        "q": "s79",
+        "suggested_address": []
+      }
+    }
+  }
+}

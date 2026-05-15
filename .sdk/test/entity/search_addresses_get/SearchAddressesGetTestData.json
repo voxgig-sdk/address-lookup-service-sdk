@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "search_addresses_get": {
+      "SEARCH_ADDRESSES_GET00": {
+        "address": {},
+        "validation_information": {}
+      },
+      "SEARCH_ADDRESSES_GET01": {
+        "address": {},
+        "validation_information": {}
+      },
+      "SEARCH_ADDRESSES_GET02": {
+        "address": {},
+        "validation_information": {}
+      }
+    }
+  },
+  "new": {
+    "search_addresses_get": {
+      "search_addresses_get_ref01": {
+        "address": {},
+        "validation_information": {}
+      }
+    }
+  }
+}

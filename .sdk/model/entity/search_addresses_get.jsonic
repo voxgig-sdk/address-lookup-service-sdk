@@ -1,0 +1,65 @@
+# Entity: search_addresses_get
+
+main: kit: entity: search_addresses_get: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "address"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "validation_information"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "search_addresses_get"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 10
+                kind: "query"
+                name: "n"
+                orig: "n"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "香港中環皇后大道中1號"
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/"
+          select: {
+            exist: [
+              "n"
+              "q"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

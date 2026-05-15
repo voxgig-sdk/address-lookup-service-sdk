@@ -1,0 +1,18 @@
+# BasicSearchAddressesPostFlow
+
+main: kit: flow: BasicSearchAddressesPostFlow:
+{
+  entity: "search_addresses_post",
+  kind: "basic",
+  name: "BasicSearchAddressesPostFlow",
+  step: [
+    {
+      input: {
+        ref: "search_addresses_post_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSearchAddressesPostFlow"
+}

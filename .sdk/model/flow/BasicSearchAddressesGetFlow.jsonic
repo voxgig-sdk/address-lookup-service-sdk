@@ -1,0 +1,22 @@
+# BasicSearchAddressesGetFlow
+
+main: kit: flow: BasicSearchAddressesGetFlow:
+{
+  entity: "search_addresses_get",
+  kind: "basic",
+  name: "BasicSearchAddressesGetFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "search_addresses_get_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSearchAddressesGetFlow"
+}

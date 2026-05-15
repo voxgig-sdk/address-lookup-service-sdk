@@ -1,0 +1,44 @@
+# Entity: search_addresses_post
+
+main: kit: entity: search_addresses_post: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "n"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "q"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "suggested_address"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "search_addresses_post"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/"
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

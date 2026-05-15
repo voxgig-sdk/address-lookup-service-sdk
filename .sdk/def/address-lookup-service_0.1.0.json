@@ -1,0 +1,296 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Address Lookup Service",
+    "description": "The Address Lookup Service API provides a means for users to retrieve address records based on input address information. Users can submit both GET and POST requests to search for address details using free-text format inputs, facilitating easy access to relevant address data.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Hong Kong Government - Data Portal",
+      "url": "https://data.gov.hk"
+    },
+    "termsOfService": "https://data.gov.hk/en/terms-and-conditions"
+  },
+  "servers": [
+    {
+      "url": "https://www.als.ogcio.gov.hk/lookup",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Search addresses using GET request",
+        "description": "Retrieve address records based on free-text format input address information using GET method",
+        "operationId": "searchAddressesGet",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Free-text address query string",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "香港中環皇后大道中1號"
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "description": "Number of records to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 200
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with address records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Address Lookup"
+        ]
+      },
+      "post": {
+        "summary": "Search addresses using POST request",
+        "description": "Retrieve address records based on free-text format input address information using POST method",
+        "operationId": "searchAddressesPost",
+        "requestBody": {
+          "description": "Address search request parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response with address records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Address Lookup"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddressRequest": {
+        "type": "object",
+        "required": [
+          "q"
+        ],
+        "properties": {
+          "q": {
+            "type": "string",
+            "description": "Free-text address query string",
+            "example": "香港中環皇后大道中1號"
+          },
+          "n": {
+            "type": "integer",
+            "description": "Number of records to return",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 200
+          }
+        }
+      },
+      "AddressResponse": {
+        "type": "object",
+        "properties": {
+          "SuggestedAddress": {
+            "type": "array",
+            "description": "List of suggested addresses matching the query",
+            "items": {
+              "$ref": "#/components/schemas/AddressRecord"
+            }
+          }
+        }
+      },
+      "AddressRecord": {
+        "type": "object",
+        "properties": {
+          "Address": {
+            "type": "object",
+            "properties": {
+              "PremisesAddress": {
+                "type": "object",
+                "properties": {
+                  "ChiPremisesAddress": {
+                    "type": "object",
+                    "properties": {
+                      "Region": {
+                        "type": "string",
+                        "description": "Region in Chinese"
+                      },
+                      "District": {
+                        "type": "string",
+                        "description": "District in Chinese"
+                      },
+                      "Street": {
+                        "type": "string",
+                        "description": "Street in Chinese"
+                      },
+                      "BuildingName": {
+                        "type": "string",
+                        "description": "Building name in Chinese"
+                      },
+                      "Estate": {
+                        "type": "string",
+                        "description": "Estate in Chinese"
+                      }
+                    }
+                  },
+                  "EngPremisesAddress": {
+                    "type": "object",
+                    "properties": {
+                      "Region": {
+                        "type": "string",
+                        "description": "Region in English",
+                        "example": "HK"
+                      },
+                      "District": {
+                        "type": "string",
+                        "description": "District in English",
+                        "example": "CENTRAL AND WESTERN"
+                      },
+                      "Street": {
+                        "type": "string",
+                        "description": "Street in English",
+                        "example": "QUEEN'S ROAD CENTRAL"
+                      },
+                      "BuildingName": {
+                        "type": "string",
+                        "description": "Building name in English",
+                        "example": "CENTRAL GOVERNMENT OFFICES"
+                      },
+                      "Estate": {
+                        "type": "string",
+                        "description": "Estate in English"
+                      }
+                    }
+                  },
+                  "GeospatialInformation": {
+                    "type": "object",
+                    "properties": {
+                      "Latitude": {
+                        "type": "number",
+                        "format": "double",
+                        "description": "Latitude coordinate"
+                      },
+                      "Longitude": {
+                        "type": "number",
+                        "format": "double",
+                        "description": "Longitude coordinate"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "ValidationInformation": {
+            "type": "object",
+            "properties": {
+              "Score": {
+                "type": "number",
+                "format": "double",
+                "description": "Matching score for the address"
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error description"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Address Lookup",
+      "description": "Operations for searching and retrieving address records"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official API Documentation",
+    "url": "https://data.gov.hk/en-data/dataset/hk-dpo-als_01-als/resource/210c2cc9-1172-4529-a82b-f10107513e9c"
+  }
+}
