@@ -4,17 +4,20 @@
       "SEARCH_ADDRESSES_POST00": {
         "n": "s1e",
         "q": "s1f",
-        "suggested_address": []
+        "suggested_address": [],
+        "id": "SEARCH_ADDRESSES_POST00"
       },
       "SEARCH_ADDRESSES_POST01": {
         "n": "s3c",
         "q": "s3d",
-        "suggested_address": []
+        "suggested_address": [],
+        "id": "SEARCH_ADDRESSES_POST01"
       },
       "SEARCH_ADDRESSES_POST02": {
         "n": "s5a",
         "q": "s5b",
-        "suggested_address": []
+        "suggested_address": [],
+        "id": "SEARCH_ADDRESSES_POST02"
       }
     }
   },

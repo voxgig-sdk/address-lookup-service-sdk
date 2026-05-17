@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/address-lookup-service-sdk"
+	sdk "github.com/voxgig-sdk/address-lookup-service-sdk/go"
 )
 
 func TestExists(t *testing.T) {

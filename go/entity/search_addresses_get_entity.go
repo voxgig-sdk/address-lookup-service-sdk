@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/address-lookup-service-sdk/core"
+	"github.com/voxgig-sdk/address-lookup-service-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/address-lookup-service-sdk/go/utility/struct"
 )
 
 type SearchAddressesGetEntity struct {

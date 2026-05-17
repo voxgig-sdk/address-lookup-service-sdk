@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/address-lookup-service-sdk"
-	"github.com/voxgig-sdk/address-lookup-service-sdk/core"
+	sdk "github.com/voxgig-sdk/address-lookup-service-sdk/go"
+	"github.com/voxgig-sdk/address-lookup-service-sdk/go/core"
 )
 
 func TestSearchAddressesGetDirect(t *testing.T) {

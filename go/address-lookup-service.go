@@ -1,10 +1,10 @@
 package voxgigaddresslookupservicesdk
 
 import (
-	"github.com/voxgig-sdk/address-lookup-service-sdk/core"
-	"github.com/voxgig-sdk/address-lookup-service-sdk/entity"
-	"github.com/voxgig-sdk/address-lookup-service-sdk/feature"
-	_ "github.com/voxgig-sdk/address-lookup-service-sdk/utility"
+	"github.com/voxgig-sdk/address-lookup-service-sdk/go/core"
+	"github.com/voxgig-sdk/address-lookup-service-sdk/go/entity"
+	"github.com/voxgig-sdk/address-lookup-service-sdk/go/feature"
+	_ "github.com/voxgig-sdk/address-lookup-service-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
