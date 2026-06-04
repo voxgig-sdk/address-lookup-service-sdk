@@ -63,14 +63,12 @@ function search_addresses_get_direct_setup(mockres)
   local env = runner.env_override({
     ["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID"] = {},
     ["ADDRESSLOOKUPSERVICE_TEST_LIVE"] = "FALSE",
-    ["ADDRESSLOOKUPSERVICE_APIKEY"] = "NONE",
   })
 
   local live = env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["ADDRESSLOOKUPSERVICE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

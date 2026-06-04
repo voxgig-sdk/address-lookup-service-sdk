@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.als.ogcio.gov.hk/lookup',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

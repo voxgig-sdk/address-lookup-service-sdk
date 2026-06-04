@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { AddressLookupServiceSDK } from 'address-lookup-service'
 
-const client = new AddressLookupServiceSDK({
-  apikey: process.env.ADDRESS-LOOKUP-SERVICE_APIKEY,
-})
+const client = new AddressLookupServiceSDK({})
 ```
 
 ### 2. List searchaddressesgets
@@ -84,7 +82,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new AddressLookupServiceSDK({ apikey: '...' })
+const client = new AddressLookupServiceSDK()
 const testClient = client.tester()
 ```
 
@@ -120,7 +118,6 @@ const logger = {
 }
 
 const client = new AddressLookupServiceSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -131,7 +128,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ADDRESS-LOOKUP-SERVICE_TEST_LIVE=TRUE
-ADDRESS-LOOKUP-SERVICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,7 +145,6 @@ cd ts && npm test
 
 ```ts
 new AddressLookupServiceSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -160,7 +155,6 @@ new AddressLookupServiceSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
