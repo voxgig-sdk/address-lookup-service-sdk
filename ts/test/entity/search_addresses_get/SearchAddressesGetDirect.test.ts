@@ -82,12 +82,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID': {},
     'ADDRESSLOOKUPSERVICE_TEST_LIVE': 'FALSE',
+    'ADDRESSLOOKUPSERVICE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ADDRESSLOOKUPSERVICE_TEST_LIVE
 
   if (live) {
     const client = new AddressLookupServiceSDK({
+      apikey: env.ADDRESSLOOKUPSERVICE_APIKEY,
     })
 
     let idmap: any = env['ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID']

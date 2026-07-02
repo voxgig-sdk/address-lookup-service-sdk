@@ -77,6 +77,7 @@ def search_addresses_post_basic_setup(extra)
     "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID" => idmap,
     "ADDRESSLOOKUPSERVICE_TEST_LIVE" => "FALSE",
     "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN" => "FALSE",
+    "ADDRESSLOOKUPSERVICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -88,6 +89,7 @@ def search_addresses_post_basic_setup(extra)
   if env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["ADDRESSLOOKUPSERVICE_APIKEY"],
       },
       extra || {},
     ])

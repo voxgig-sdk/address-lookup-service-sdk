@@ -15,6 +15,9 @@ module AddressLookupServiceConfig
       },
       "options" => {
         "base" => "https://www.als.ogcio.gov.hk/lookup",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -27,50 +30,53 @@ module AddressLookupServiceConfig
         "search_addresses_get" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "address",
               "req" => false,
               "type" => "`$OBJECT`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "validation_information",
               "req" => false,
               "type" => "`$OBJECT`",
-              "active" => true,
               "index$" => 1,
             },
           ],
           "name" => "search_addresses_get",
           "op" => {
             "list" => {
+              "input" => "data",
               "name" => "list",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "query" => [
                       {
+                        "active" => true,
                         "example" => 10,
                         "kind" => "query",
                         "name" => "n",
                         "orig" => "n",
                         "reqd" => false,
                         "type" => "`$INTEGER`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "example" => "香港中環皇后大道中1號",
                         "kind" => "query",
                         "name" => "q",
                         "orig" => "q",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
                   "method" => "GET",
                   "orig" => "/",
+                  "parts" => [],
                   "select" => {
                     "exist" => [
                       "n",
@@ -81,12 +87,9 @@ module AddressLookupServiceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "parts" => [],
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "list",
             },
           },
@@ -97,47 +100,47 @@ module AddressLookupServiceConfig
         "search_addresses_post" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "n",
               "req" => false,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "q",
               "req" => true,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "suggested_address",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 2,
             },
           ],
           "name" => "search_addresses_post",
           "op" => {
             "create" => {
+              "input" => "data",
               "name" => "create",
               "points" => [
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "POST",
                   "orig" => "/",
+                  "parts" => [],
+                  "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "parts" => [],
-                  "args" => {},
-                  "select" => {},
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "create",
             },
           },

@@ -119,6 +119,7 @@ func search_addresses_getBasicSetup(extra map[string]any) *entityTestSetup {
 		"ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID": idmap,
 		"ADDRESSLOOKUPSERVICE_TEST_LIVE":      "FALSE",
 		"ADDRESSLOOKUPSERVICE_TEST_EXPLAIN":   "FALSE",
+		"ADDRESSLOOKUPSERVICE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID"])
@@ -129,6 +130,7 @@ func search_addresses_getBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ADDRESSLOOKUPSERVICE_APIKEY"],
 			},
 			extra,
 		})

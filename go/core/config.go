@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://www.als.ogcio.gov.hk/lookup",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -26,50 +29,53 @@ func MakeConfig() map[string]any {
 			"search_addresses_get": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "address",
 						"req": false,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "validation_information",
 						"req": false,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 1,
 					},
 				},
 				"name": "search_addresses_get",
 				"op": map[string]any{
 					"list": map[string]any{
+						"input": "data",
 						"name": "list",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
+											"active": true,
 											"example": 10,
 											"kind": "query",
 											"name": "n",
 											"orig": "n",
 											"reqd": false,
 											"type": "`$INTEGER`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"example": "香港中環皇后大道中1號",
 											"kind": "query",
 											"name": "q",
 											"orig": "q",
 											"reqd": true,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 								},
 								"method": "GET",
 								"orig": "/",
+								"parts": []any{},
 								"select": map[string]any{
 									"exist": []any{
 										"n",
@@ -80,12 +86,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"parts": []any{},
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "list",
 					},
 				},
@@ -96,47 +99,47 @@ func MakeConfig() map[string]any {
 			"search_addresses_post": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "n",
 						"req": false,
 						"type": "`$INTEGER`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "q",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "suggested_address",
 						"req": false,
 						"type": "`$ARRAY`",
-						"active": true,
 						"index$": 2,
 					},
 				},
 				"name": "search_addresses_post",
 				"op": map[string]any{
 					"create": map[string]any{
+						"input": "data",
 						"name": "create",
 						"points": []any{
 							map[string]any{
+								"active": true,
+								"args": map[string]any{},
 								"method": "POST",
 								"orig": "/",
+								"parts": []any{},
+								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"parts": []any{},
-								"args": map[string]any{},
-								"select": map[string]any{},
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "create",
 					},
 				},

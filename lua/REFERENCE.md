@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -105,7 +105,7 @@ local search_addresses_get = client:SearchAddressesGet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:SearchAddressesGet(nil):list(nil, nil)
+local results, err = client:SearchAddressesGet():list()
 ```
 
 ### Common Methods
@@ -159,9 +159,9 @@ local search_addresses_post = client:SearchAddressesPost(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:SearchAddressesPost(nil):create({
+local result, err = client:SearchAddressesPost():create({
   q = --[[ `$STRING` ]],
-}, nil)
+})
 ```
 
 ### Common Methods

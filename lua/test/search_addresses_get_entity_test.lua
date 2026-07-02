@@ -92,6 +92,7 @@ function search_addresses_get_basic_setup(extra)
     ["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID"] = idmap,
     ["ADDRESSLOOKUPSERVICE_TEST_LIVE"] = "FALSE",
     ["ADDRESSLOOKUPSERVICE_TEST_EXPLAIN"] = "FALSE",
+    ["ADDRESSLOOKUPSERVICE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function search_addresses_get_basic_setup(extra)
   if env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["ADDRESSLOOKUPSERVICE_APIKEY"],
       },
       extra or {},
     })

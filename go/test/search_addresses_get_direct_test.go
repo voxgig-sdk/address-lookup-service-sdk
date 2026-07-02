@@ -93,12 +93,14 @@ func search_addresses_getDirectSetup(mockres any) *search_addresses_getDirectSet
 	env := envOverride(map[string]any{
 		"ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID": map[string]any{},
 		"ADDRESSLOOKUPSERVICE_TEST_LIVE":    "FALSE",
+		"ADDRESSLOOKUPSERVICE_APIKEY":       "NONE",
 	})
 
 	live := env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ADDRESSLOOKUPSERVICE_APIKEY"],
 		}
 		client := sdk.NewAddressLookupServiceSDK(mergedOpts)
 

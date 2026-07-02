@@ -1,20 +1,8 @@
 # AddressLookupService SDK
 
-Look up Hong Kong addresses from free-text input via a public government API
+Address Lookup Service client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Address Lookup Service
-
-The Address Lookup Service (ALS) is a public API run by the Hong Kong Government for resolving free-text address strings into structured Hong Kong address records. It is hosted at [www.als.ogcio.gov.hk](https://www.als.ogcio.gov.hk/lookup) under the Office of the Government Chief Information Officer.
-
-What you get from the API:
-
-- Submit a free-text address query and receive matching Hong Kong address records.
-- Both `GET` (query string) and `POST` request styles are supported for the same lookup operation.
-- Useful for geocoding, address validation, and form auto-completion against the official Hong Kong address dataset.
-
-Operational notes: the service is reachable over HTTPS at `https://www.als.ogcio.gov.hk/lookup` and is reported by community monitors to have CORS enabled, making it usable from browser clients. No authentication is documented in the OpenAPI definition.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install address-lookup-service-sdk
 luarocks install address-lookup-service-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { AddressLookupServiceSDK } from 'address-lookup-service'
 
-const client = new AddressLookupServiceSDK({})
+const client = new AddressLookupServiceSDK({
+  apikey: process.env.ADDRESS-LOOKUP-SERVICE_APIKEY,
+})
 
 // List all searchaddressesgets
 const searchaddressesgets = await client.SearchAddressesGet().list()
+console.log(searchaddressesgets.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **SearchAddressesGet** | Address lookup via an HTTP GET request to `/lookup` with the free-text address supplied as a query parameter. | `/` |
-| **SearchAddressesPost** | Address lookup via an HTTP POST request to `/lookup`, sending the free-text address in the request body for cases where a longer or structured input is preferred. | `/` |
+| **SearchAddressesGet** |  | `/` |
+| **SearchAddressesPost** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from addresslookupservice_sdk import AddressLookupServiceSDK
 
-client = AddressLookupServiceSDK({})
+client = AddressLookupServiceSDK({
+    "apikey": os.environ.get("ADDRESS-LOOKUP-SERVICE_APIKEY"),
+})
 
 # List all searchaddressesgets
-searchaddressesgets, err = client.SearchAddressesGet(None).list(None, None)
+searchaddressesgets, err = client.SearchAddressesGet().list()
+print(searchaddressesgets)
 ```
 
 ### PHP
@@ -125,10 +119,13 @@ searchaddressesgets, err = client.SearchAddressesGet(None).list(None, None)
 <?php
 require_once 'addresslookupservice_sdk.php';
 
-$client = new AddressLookupServiceSDK([]);
+$client = new AddressLookupServiceSDK([
+    "apikey" => getenv("ADDRESS-LOOKUP-SERVICE_APIKEY"),
+]);
 
 // List all searchaddressesgets
-[$searchaddressesgets, $err] = $client->SearchAddressesGet(null)->list(null, null);
+[$searchaddressesgets, $err] = $client->SearchAddressesGet()->list();
+print_r($searchaddressesgets);
 ```
 
 ### Golang
@@ -136,10 +133,13 @@ $client = new AddressLookupServiceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/address-lookup-service-sdk/go"
 
-client := sdk.NewAddressLookupServiceSDK(map[string]any{})
+client := sdk.NewAddressLookupServiceSDK(map[string]any{
+    "apikey": os.Getenv("ADDRESS-LOOKUP-SERVICE_APIKEY"),
+})
 
 // List all searchaddressesgets
 searchaddressesgets, err := client.SearchAddressesGet(nil).List(nil, nil)
+fmt.Println(searchaddressesgets)
 ```
 
 ### Ruby
@@ -147,10 +147,13 @@ searchaddressesgets, err := client.SearchAddressesGet(nil).List(nil, nil)
 ```ruby
 require_relative "AddressLookupService_sdk"
 
-client = AddressLookupServiceSDK.new({})
+client = AddressLookupServiceSDK.new({
+  "apikey" => ENV["ADDRESS-LOOKUP-SERVICE_APIKEY"],
+})
 
 # List all searchaddressesgets
-searchaddressesgets, err = client.SearchAddressesGet(nil).list(nil, nil)
+searchaddressesgets, err = client.SearchAddressesGet().list
+puts searchaddressesgets
 ```
 
 ### Lua
@@ -158,10 +161,13 @@ searchaddressesgets, err = client.SearchAddressesGet(nil).list(nil, nil)
 ```lua
 local sdk = require("address-lookup-service_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ADDRESS-LOOKUP-SERVICE_APIKEY"),
+})
 
 -- List all searchaddressesgets
-local searchaddressesgets, err = client:SearchAddressesGet(nil):list(nil, nil)
+local searchaddressesgets, err = client:SearchAddressesGet():list()
+print(searchaddressesgets)
 ```
 
 ## Unit testing in offline mode
@@ -180,25 +186,21 @@ const result = await client.SearchAddressesGet().load({ id: 'test01' })
 ### Python
 
 ```python
-client = AddressLookupServiceSDK.test(None, None)
-result, err = client.SearchAddressesGet(None).load(
-    {"id": "test01"}, None
-)
+client = AddressLookupServiceSDK.test()
+result, err = client.SearchAddressesGet().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = AddressLookupServiceSDK::test(null, null);
-[$result, $err] = $client->SearchAddressesGet(null)->load(
-    ["id" => "test01"], null
-);
+$client = AddressLookupServiceSDK::test();
+[$result, $err] = $client->SearchAddressesGet()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.SearchAddressesGet(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -207,19 +209,15 @@ result, err := client.SearchAddressesGet(nil).Load(
 ### Ruby
 
 ```ruby
-client = AddressLookupServiceSDK.test(nil, nil)
-result, err = client.SearchAddressesGet(nil).load(
-  { "id" => "test01" }, nil
-)
+client = AddressLookupServiceSDK.test
+result, err = client.SearchAddressesGet().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:SearchAddressesGet(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:SearchAddressesGet():load({ id = "test01" })
 ```
 
 ## How it works
@@ -323,14 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Address Lookup Service
-
-- Upstream: [https://www.als.ogcio.gov.hk/lookup](https://www.als.ogcio.gov.hk/lookup)
-
-- Operated by the Office of the Government Chief Information Officer (OGCIO) of the Hong Kong SAR Government.
-- Use is subject to the Hong Kong Government's terms of use and privacy policy.
-- No explicit open licence is published in the OpenAPI spec; check the official OGCIO/Digital Policy Office pages for current terms before redistribution.
 
 ---
 

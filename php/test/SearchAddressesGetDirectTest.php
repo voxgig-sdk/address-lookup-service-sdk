@@ -68,12 +68,14 @@ function search_addresses_get_direct_setup($mockres)
     $env = Runner::env_override([
         "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID" => [],
         "ADDRESSLOOKUPSERVICE_TEST_LIVE" => "FALSE",
+        "ADDRESSLOOKUPSERVICE_APIKEY" => "NONE",
     ]);
 
     $live = $env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["ADDRESSLOOKUPSERVICE_APIKEY"],
         ];
         $client = new AddressLookupServiceSDK($merged_opts);
         return [
