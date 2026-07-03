@@ -10,7 +10,7 @@ The Python SDK for the AddressLookupService API — an entity-oriented client fo
 
 ## Install
 ```bash
-pip install address-lookup-service-sdk
+pip install voxgig-sdk-address-lookup-service
 ```
 
 Or install from source:

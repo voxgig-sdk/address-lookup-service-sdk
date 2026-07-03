@@ -10,13 +10,13 @@ The Ruby SDK for the AddressLookupService API — an entity-oriented client usin
 
 ## Install
 ```bash
-gem install address-lookup-service-sdk
+gem install voxgig-sdk-address-lookup-service
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "address-lookup-service-sdk"
+gem "voxgig-sdk-address-lookup-service"
 ```
 
 Then run:

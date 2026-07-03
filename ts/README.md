@@ -10,7 +10,7 @@ The TypeScript SDK for the AddressLookupService API — a type-safe, entity-orie
 
 ## Install
 ```bash
-npm install address-lookup-service
+npm install @voxgig-sdk/address-lookup-service
 ```
 ## Tutorial: your first API call
 

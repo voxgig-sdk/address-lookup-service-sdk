@@ -10,7 +10,7 @@ The PHP SDK for the AddressLookupService API — an entity-oriented client using
 
 ## Install
 ```bash
-composer require voxgig/address-lookup-service-sdk
+composer require voxgig-sdk/address-lookup-service
 ```
 
 

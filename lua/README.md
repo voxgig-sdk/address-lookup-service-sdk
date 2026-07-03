@@ -10,7 +10,7 @@ The Lua SDK for the AddressLookupService API — an entity-oriented client using
 
 ## Install
 ```bash
-luarocks install address-lookup-service-sdk
+luarocks install voxgig-sdk-address-lookup-service
 ```
 
 If the module is not yet published, add the source directory to
