@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## SearchAddressesGetEntity
 
 ```lua
-local search_addresses_get = client:search_addresses_get(nil)
+local search_addresses_get = client:SearchAddressesGet(nil)
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ local search_addresses_get = client:search_addresses_get(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:search_addresses_get():list()
+local results, err = client:SearchAddressesGet():list()
 ```
 
 ### Common Methods
@@ -140,7 +140,7 @@ Return the entity name.
 ## SearchAddressesPostEntity
 
 ```lua
-local search_addresses_post = client:search_addresses_post(nil)
+local search_addresses_post = client:SearchAddressesPost(nil)
 ```
 
 ### Fields
@@ -158,7 +158,7 @@ local search_addresses_post = client:search_addresses_post(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:search_addresses_post():create({
+local result, err = client:SearchAddressesPost():create({
   q = --[[ `$STRING` ]],
 })
 ```

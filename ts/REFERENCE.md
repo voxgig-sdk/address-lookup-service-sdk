@@ -121,7 +121,7 @@ Alias for `AddressLookupServiceSDK.test()`.
 ## SearchAddressesGetEntity
 
 ```ts
-const search_addresses_get = client.search_addresses_get
+const search_addresses_get = client.SearchAddressesGet()
 ```
 
 ### Fields
@@ -138,7 +138,7 @@ const search_addresses_get = client.search_addresses_get
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.search_addresses_get.list()
+const results = await client.SearchAddressesGet().list()
 ```
 
 ### Common Methods
@@ -172,7 +172,7 @@ Return a copy of the entity options.
 ## SearchAddressesPostEntity
 
 ```ts
-const search_addresses_post = client.search_addresses_post
+const search_addresses_post = client.SearchAddressesPost()
 ```
 
 ### Fields
@@ -190,7 +190,7 @@ const search_addresses_post = client.search_addresses_post
 Create a new entity with the given data.
 
 ```ts
-const result = await client.search_addresses_post.create({
+const result = await client.SearchAddressesPost().create({
   q: /* `$STRING` */,
 })
 ```

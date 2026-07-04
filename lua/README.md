@@ -31,17 +31,17 @@ local sdk = require("address-lookup-service_sdk")
 local client = sdk.new()
 ```
 
-### 2. List searchaddressesgets
+### 2. List searchaddressesget records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:searchaddressesget():list()
+local searchaddressesgets, err = client:SearchAddressesGet():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(searchaddressesgets) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:searchaddressesget():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:SearchAddressesGet():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -190,17 +190,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local search_addresses_get, err = client:SearchAddressesGet():load({ id = "example_id" })
+    if err then error(err) end
+    -- search_addresses_get is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -234,7 +239,7 @@ API path: `/`
 
 ### SearchAddressesGet
 
-Create an instance: `const search_addresses_get = client.search_addresses_get`
+Create an instance: `local search_addresses_get = client:SearchAddressesGet(nil)`
 
 #### Operations
 
@@ -251,14 +256,14 @@ Create an instance: `const search_addresses_get = client.search_addresses_get`
 
 #### Example: List
 
-```ts
-const search_addresses_gets = await client.search_addresses_get.list()
+```lua
+local search_addresses_gets, err = client:SearchAddressesGet():list()
 ```
 
 
 ### SearchAddressesPost
 
-Create an instance: `const search_addresses_post = client.search_addresses_post`
+Create an instance: `local search_addresses_post = client:SearchAddressesPost(nil)`
 
 #### Operations
 
@@ -276,9 +281,9 @@ Create an instance: `const search_addresses_post = client.search_addresses_post`
 
 #### Example: Create
 
-```ts
-const search_addresses_post = await client.search_addresses_post.create({
-  q: /* `$STRING` */,
+```lua
+local search_addresses_post, err = client:SearchAddressesPost():create({
+  q = nil, -- `$STRING`
 })
 ```
 
@@ -354,7 +359,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local searchaddressesget = client:searchaddressesget()
+local searchaddressesget = client:SearchAddressesGet()
 searchaddressesget:load({ id = "example_id" })
 
 -- searchaddressesget:data_get() now returns the loaded searchaddressesget data

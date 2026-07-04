@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## SearchAddressesGetEntity
 
 ```ruby
-search_addresses_get = client.search_addresses_get
+search_addresses_get = client.SearchAddressesGet
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ search_addresses_get = client.search_addresses_get
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.search_addresses_get.list(nil)
+results = client.SearchAddressesGet.list(nil)
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## SearchAddressesPostEntity
 
 ```ruby
-search_addresses_post = client.search_addresses_post
+search_addresses_post = client.SearchAddressesPost
 ```
 
 ### Fields
@@ -161,7 +161,7 @@ search_addresses_post = client.search_addresses_post
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.search_addresses_post.create({
+result = client.SearchAddressesPost.create({
   "q" => # `$STRING`,
 })
 ```

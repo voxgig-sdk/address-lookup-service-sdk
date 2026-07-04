@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:search_addresses_get():list() / client:search_addresses_get():load({ id = ... })
-function AddressLookupServiceSDK:search_addresses_get(data)
+-- Idiomatic facade: client:SearchAddressesGet():list() / client:SearchAddressesGet():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AddressLookupServiceSDK:SearchAddressesGet(data)
   local EntityMod = require("entity.search_addresses_get_entity")
   if data == nil then
     if self._search_addresses_get == nil then
@@ -256,15 +257,10 @@ function AddressLookupServiceSDK:search_addresses_get(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:search_addresses_get() instead.
-function AddressLookupServiceSDK:SearchAddressesGet(data)
-  local EntityMod = require("entity.search_addresses_get_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search_addresses_post():list() / client:search_addresses_post():load({ id = ... })
-function AddressLookupServiceSDK:search_addresses_post(data)
+-- Idiomatic facade: client:SearchAddressesPost():list() / client:SearchAddressesPost():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AddressLookupServiceSDK:SearchAddressesPost(data)
   local EntityMod = require("entity.search_addresses_post_entity")
   if data == nil then
     if self._search_addresses_post == nil then
@@ -272,12 +268,6 @@ function AddressLookupServiceSDK:search_addresses_post(data)
     end
     return self._search_addresses_post
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:search_addresses_post() instead.
-function AddressLookupServiceSDK:SearchAddressesPost(data)
-  local EntityMod = require("entity.search_addresses_post_entity")
   return EntityMod.new(self, data)
 end
 

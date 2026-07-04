@@ -233,10 +233,10 @@ class AddressLookupServiceSDK
 
     private $_search_addresses_get = null;
 
-    // Idiomatic facade: $client->search_addresses_get()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias SearchAddressesGet() (PHP method
-    // names are case-insensitive).
-    public function search_addresses_get($data = null)
+    // Canonical facade: $client->SearchAddressesGet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->search_addresses_get()
+    // resolves here too.
+    public function SearchAddressesGet($data = null)
     {
         require_once __DIR__ . '/entity/search_addresses_get_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class AddressLookupServiceSDK
 
     private $_search_addresses_post = null;
 
-    // Idiomatic facade: $client->search_addresses_post()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias SearchAddressesPost() (PHP method
-    // names are case-insensitive).
-    public function search_addresses_post($data = null)
+    // Canonical facade: $client->SearchAddressesPost()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->search_addresses_post()
+    // resolves here too.
+    public function SearchAddressesPost($data = null)
     {
         require_once __DIR__ . '/entity/search_addresses_post_entity.php';
         if ($data === null) {

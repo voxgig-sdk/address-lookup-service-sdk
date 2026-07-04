@@ -29,18 +29,16 @@ require_once 'addresslookupservice_sdk.php';
 $client = new AddressLookupServiceSDK();
 ```
 
-### 2. List searchaddressesgets
+### 2. List searchaddressesget records
 
 ```php
 try {
-    $result = $client->searchaddressesget()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of SearchAddressesGet records — iterate directly.
+    $searchaddressesgets = $client->SearchAddressesGet()->list();
+    foreach ($searchaddressesgets as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = AddressLookupServiceSDK::test();
+$client = AddressLookupServiceSDK::test([
+    "entity" => ["searchaddressesget" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->searchaddressesget()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$searchaddressesget = $client->SearchAddressesGet()->load(["id" => "test01"]);
+print_r($searchaddressesget);
 ```
 
 ### Use a custom fetch function
@@ -242,7 +244,7 @@ API path: `/`
 
 ### SearchAddressesGet
 
-Create an instance: `const search_addresses_get = client.search_addresses_get`
+Create an instance: `$search_addresses_get = $client->SearchAddressesGet();`
 
 #### Operations
 
@@ -259,14 +261,15 @@ Create an instance: `const search_addresses_get = client.search_addresses_get`
 
 #### Example: List
 
-```ts
-const search_addresses_gets = await client.search_addresses_get.list()
+```php
+// list() returns an array of SearchAddressesGet records (throws on error).
+$search_addresses_gets = $client->SearchAddressesGet()->list();
 ```
 
 
 ### SearchAddressesPost
 
-Create an instance: `const search_addresses_post = client.search_addresses_post`
+Create an instance: `$search_addresses_post = $client->SearchAddressesPost();`
 
 #### Operations
 
@@ -284,10 +287,10 @@ Create an instance: `const search_addresses_post = client.search_addresses_post`
 
 #### Example: Create
 
-```ts
-const search_addresses_post = await client.search_addresses_post.create({
-  q: /* `$STRING` */,
-})
+```php
+$search_addresses_post = $client->SearchAddressesPost()->create([
+    "q" => null, // `$STRING`
+]);
 ```
 
 
@@ -362,7 +365,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$searchaddressesget = $client->searchaddressesget();
+$searchaddressesget = $client->SearchAddressesGet();
 $searchaddressesget->load(["id" => "example_id"]);
 
 // $searchaddressesget->dataGet() now returns the loaded searchaddressesget data

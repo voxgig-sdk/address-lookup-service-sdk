@@ -220,41 +220,21 @@ class AddressLookupServiceSDK:
         }
 
 
-    @property
-    def search_addresses_get(self):
-        """Idiomatic facade: client.search_addresses_get.list() / client.search_addresses_get.load({"id": ...})."""
-        from entity.search_addresses_get_entity import SearchAddressesGetEntity
-        cached = getattr(self, "_search_addresses_get", None)
-        if cached is None:
-            cached = SearchAddressesGetEntity(self, None)
-            self._search_addresses_get = cached
-        return cached
-
-    def SearchAddressesGet(self, data=None):
-        # Deprecated: use client.search_addresses_get instead.
+    def SearchAddressesGet(self, data=None) -> "SearchAddressesGetEntity":
+        """Entity factory: client.SearchAddressesGet().list({}) / client.SearchAddressesGet().load({"id": ...})."""
         from entity.search_addresses_get_entity import SearchAddressesGetEntity
         return SearchAddressesGetEntity(self, data)
 
 
-    @property
-    def search_addresses_post(self):
-        """Idiomatic facade: client.search_addresses_post.list() / client.search_addresses_post.load({"id": ...})."""
-        from entity.search_addresses_post_entity import SearchAddressesPostEntity
-        cached = getattr(self, "_search_addresses_post", None)
-        if cached is None:
-            cached = SearchAddressesPostEntity(self, None)
-            self._search_addresses_post = cached
-        return cached
-
-    def SearchAddressesPost(self, data=None):
-        # Deprecated: use client.search_addresses_post instead.
+    def SearchAddressesPost(self, data=None) -> "SearchAddressesPostEntity":
+        """Entity factory: client.SearchAddressesPost().list({}) / client.SearchAddressesPost().load({"id": ...})."""
         from entity.search_addresses_post_entity import SearchAddressesPostEntity
         return SearchAddressesPostEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AddressLookupServiceSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class AddressLookupServiceSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.search_addresses_get_entity import SearchAddressesGetEntity
+    from entity.search_addresses_post_entity import SearchAddressesPostEntity

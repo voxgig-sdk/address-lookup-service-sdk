@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## SearchAddressesGetEntity
 
 ```php
-$search_addresses_get = $client->search_addresses_get();
+$search_addresses_get = $client->SearchAddressesGet();
 ```
 
 ### Fields
@@ -106,7 +106,7 @@ $search_addresses_get = $client->search_addresses_get();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->search_addresses_get()->list([]);
+$results = $client->SearchAddressesGet()->list([]);
 ```
 
 ### Common Methods
@@ -142,7 +142,7 @@ Return the entity name.
 ## SearchAddressesPostEntity
 
 ```php
-$search_addresses_post = $client->search_addresses_post();
+$search_addresses_post = $client->SearchAddressesPost();
 ```
 
 ### Fields
@@ -160,7 +160,7 @@ $search_addresses_post = $client->search_addresses_post();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->search_addresses_post()->create([
+$result = $client->SearchAddressesPost()->create([
   "q" => /* `$STRING` */,
 ]);
 ```

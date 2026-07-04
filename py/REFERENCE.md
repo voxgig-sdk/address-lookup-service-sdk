@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## SearchAddressesGetEntity
 
 ```python
-search_addresses_get = client.search_addresses_get
+search_addresses_get = client.SearchAddressesGet()
 ```
 
 ### Fields
@@ -101,7 +101,9 @@ search_addresses_get = client.search_addresses_get
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.search_addresses_get.list({})
+results = client.SearchAddressesGet().list({})
+for search_addresses_get in results:
+    print(search_addresses_get)
 ```
 
 ### Common Methods
@@ -136,7 +138,7 @@ Return the entity name.
 ## SearchAddressesPostEntity
 
 ```python
-search_addresses_post = client.search_addresses_post
+search_addresses_post = client.SearchAddressesPost()
 ```
 
 ### Fields
@@ -154,8 +156,8 @@ search_addresses_post = client.search_addresses_post
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.search_addresses_post.create({
-    "q": # `$STRING`,
+result = client.SearchAddressesPost().create({
+    "q": ...,  # `$STRING`
 })
 ```
 

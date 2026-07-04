@@ -208,26 +208,14 @@ class AddressLookupServiceSDK
   end
 
 
-  # Idiomatic facade: client.search_addresses_get.list / client.search_addresses_get.load({ "id" => ... })
-  def search_addresses_get
-    require_relative 'entity/search_addresses_get_entity'
-    @search_addresses_get ||= SearchAddressesGetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search_addresses_get instead.
+  # Canonical facade: client.SearchAddressesGet.list / client.SearchAddressesGet.load({ "id" => ... })
   def SearchAddressesGet(data = nil)
     require_relative 'entity/search_addresses_get_entity'
     SearchAddressesGetEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.search_addresses_post.list / client.search_addresses_post.load({ "id" => ... })
-  def search_addresses_post
-    require_relative 'entity/search_addresses_post_entity'
-    @search_addresses_post ||= SearchAddressesPostEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search_addresses_post instead.
+  # Canonical facade: client.SearchAddressesPost.list / client.SearchAddressesPost.load({ "id" => ... })
   def SearchAddressesPost(data = nil)
     require_relative 'entity/search_addresses_post_entity'
     SearchAddressesPostEntity.new(self, data)

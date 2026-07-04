@@ -31,14 +31,16 @@ from addresslookupservice_sdk import AddressLookupServiceSDK
 client = AddressLookupServiceSDK()
 ```
 
-### 2. List searchaddressesgets
+### 2. List searchaddressesget records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.searchaddressesget.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    searchaddressesgets = client.SearchAddressesGet().list({})
+    for searchaddressesget in searchaddressesgets:
+        print(searchaddressesget)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AddressLookupServiceSDK.test()
 
-result = client.searchaddressesget.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+searchaddressesget = client.SearchAddressesGet().load({"id": "test01"})
+# searchaddressesget contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -234,7 +237,7 @@ API path: `/`
 
 ### SearchAddressesGet
 
-Create an instance: `const search_addresses_get = client.search_addresses_get`
+Create an instance: `search_addresses_get = client.SearchAddressesGet()`
 
 #### Operations
 
@@ -251,14 +254,14 @@ Create an instance: `const search_addresses_get = client.search_addresses_get`
 
 #### Example: List
 
-```ts
-const search_addresses_gets = await client.search_addresses_get.list()
+```python
+search_addresses_gets = client.SearchAddressesGet().list({})
 ```
 
 
 ### SearchAddressesPost
 
-Create an instance: `const search_addresses_post = client.search_addresses_post`
+Create an instance: `search_addresses_post = client.SearchAddressesPost()`
 
 #### Operations
 
@@ -276,9 +279,9 @@ Create an instance: `const search_addresses_post = client.search_addresses_post`
 
 #### Example: Create
 
-```ts
-const search_addresses_post = await client.search_addresses_post.create({
-  q: /* `$STRING` */,
+```python
+search_addresses_post = client.SearchAddressesPost().create({
+    "q": ...,  # `$STRING`
 })
 ```
 
@@ -353,7 +356,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-searchaddressesget = client.searchaddressesget
+searchaddressesget = client.SearchAddressesGet()
 searchaddressesget.load({"id": "example_id"})
 
 # searchaddressesget.data_get() now returns the loaded searchaddressesget data

@@ -28,16 +28,14 @@ require_relative "AddressLookupService_sdk"
 client = AddressLookupServiceSDK.new
 ```
 
-### 2. List searchaddressesgets
+### 2. List searchaddressesget records
 
 ```ruby
 begin
-  result = client.searchaddressesget.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of SearchAddressesGet records — iterate directly.
+  searchaddressesgets = client.SearchAddressesGet.list
+  searchaddressesgets.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AddressLookupServiceSDK.test
+client = AddressLookupServiceSDK.test({
+  "entity" => { "searchaddressesget" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.searchaddressesget.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+searchaddressesget = client.SearchAddressesGet.load({ "id" => "test01" })
+puts searchaddressesget
 ```
 
 ### Use a custom fetch function
@@ -237,7 +239,7 @@ API path: `/`
 
 ### SearchAddressesGet
 
-Create an instance: `const search_addresses_get = client.search_addresses_get`
+Create an instance: `search_addresses_get = client.SearchAddressesGet`
 
 #### Operations
 
@@ -254,14 +256,15 @@ Create an instance: `const search_addresses_get = client.search_addresses_get`
 
 #### Example: List
 
-```ts
-const search_addresses_gets = await client.search_addresses_get.list()
+```ruby
+# list returns an Array of SearchAddressesGet records (raises on error).
+search_addresses_gets = client.SearchAddressesGet.list
 ```
 
 
 ### SearchAddressesPost
 
-Create an instance: `const search_addresses_post = client.search_addresses_post`
+Create an instance: `search_addresses_post = client.SearchAddressesPost`
 
 #### Operations
 
@@ -279,9 +282,9 @@ Create an instance: `const search_addresses_post = client.search_addresses_post`
 
 #### Example: Create
 
-```ts
-const search_addresses_post = await client.search_addresses_post.create({
-  q: /* `$STRING` */,
+```ruby
+search_addresses_post = client.SearchAddressesPost.create({
+  "q" => nil, # `$STRING`
 })
 ```
 
@@ -357,7 +360,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-searchaddressesget = client.searchaddressesget
+searchaddressesget = client.SearchAddressesGet
 searchaddressesget.load({ "id" => "example_id" })
 
 # searchaddressesget.data_get now returns the loaded searchaddressesget data

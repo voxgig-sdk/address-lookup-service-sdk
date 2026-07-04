@@ -26,9 +26,11 @@ import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
 
 const client = new AddressLookupServiceSDK()
 
-// List all searchaddressesgets
-const searchaddressesgets = await client.searchaddressesget.list()
-console.log(searchaddressesgets.data)
+// List all searchaddressesgets (returns SearchAddressesGet[])
+const searchaddressesgets = await client.SearchAddressesGet().list()
+for (const searchaddressesget of searchaddressesgets) {
+  console.log(searchaddressesget)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from addresslookupservice_sdk import AddressLookupServiceSDK
 
 client = AddressLookupServiceSDK()
 
-# List all searchaddressesgets
-searchaddressesgets = client.searchaddressesget.list()
-print(searchaddressesgets)
+# List all searchaddressesgets (returns a list, raises on error)
+searchaddressesgets = client.SearchAddressesGet().list({})
+for searchaddressesget in searchaddressesgets:
+    print(searchaddressesget)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'addresslookupservice_sdk.php';
 
 $client = new AddressLookupServiceSDK();
 
-// List all searchaddressesgets (throws on error)
-$searchaddressesgets = $client->searchaddressesget()->list();
+// List all searchaddressesgets (returns an array; throws on error)
+$searchaddressesgets = $client->SearchAddressesGet()->list();
 print_r($searchaddressesgets);
 ```
 
@@ -121,8 +124,8 @@ require_relative "AddressLookupService_sdk"
 
 client = AddressLookupServiceSDK.new
 
-# List all searchaddressesgets
-searchaddressesgets = client.searchaddressesget.list
+# List all searchaddressesgets (returns an Array; raises on error)
+searchaddressesgets = client.SearchAddressesGet.list
 puts searchaddressesgets
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("address-lookup-service_sdk")
 local client = sdk.new()
 
 -- List all searchaddressesgets
-local searchaddressesgets, err = client:searchaddressesget():list()
+local searchaddressesgets, err = client:SearchAddressesGet():list()
 print(searchaddressesgets)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AddressLookupServiceSDK.test()
-const result = await client.searchaddressesget.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const searchaddressesget = await client.SearchAddressesGet().load({ id: 'test01' })
+// searchaddressesget is a bare SearchAddressesGet populated with mock data
+console.log(searchaddressesget)
 ```
 
 ### Python
 
 ```python
 client = AddressLookupServiceSDK.test()
-result = client.searchaddressesget.load({"id": "test01"})
+searchaddressesget = client.SearchAddressesGet().load({"id": "test01"})
+print(searchaddressesget)
 ```
 
 ### PHP
 
 ```php
-$client = AddressLookupServiceSDK::test();
-$result = $client->searchaddressesget()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = AddressLookupServiceSDK::test([
+    "entity" => ["searchaddressesget" => ["test01" => ["id" => "test01"]]],
+]);
+$searchaddressesget = $client->SearchAddressesGet()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.SearchAddressesGet(nil).Load(
 ### Ruby
 
 ```ruby
-client = AddressLookupServiceSDK.test
-result = client.searchaddressesget.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = AddressLookupServiceSDK.test({
+  "entity" => { "searchaddressesget" => { "test01" => { "id" => "test01" } } },
+})
+searchaddressesget = client.SearchAddressesGet.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:searchaddressesget():load({ id = "test01" })
+local result, err = client:SearchAddressesGet():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
