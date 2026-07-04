@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SearchAddressesGetListMatch
+---@param ctrl? table
+---@return SearchAddressesGet[]
+---@return string? err
 function SearchAddressesGetEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

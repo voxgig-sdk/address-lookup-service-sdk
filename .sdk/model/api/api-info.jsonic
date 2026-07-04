@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Hong Kong Government - Data Portal"
         url: "https://data.gov.hk"

@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:search_addresses_get():list() / client:search_addresses_get():load({ id = ... })
+function AddressLookupServiceSDK:search_addresses_get(data)
+  local EntityMod = require("entity.search_addresses_get_entity")
+  if data == nil then
+    if self._search_addresses_get == nil then
+      self._search_addresses_get = EntityMod.new(self, nil)
+    end
+    return self._search_addresses_get
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search_addresses_get() instead.
 function AddressLookupServiceSDK:SearchAddressesGet(data)
   local EntityMod = require("entity.search_addresses_get_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search_addresses_post():list() / client:search_addresses_post():load({ id = ... })
+function AddressLookupServiceSDK:search_addresses_post(data)
+  local EntityMod = require("entity.search_addresses_post_entity")
+  if data == nil then
+    if self._search_addresses_post == nil then
+      self._search_addresses_post = EntityMod.new(self, nil)
+    end
+    return self._search_addresses_post
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search_addresses_post() instead.
 function AddressLookupServiceSDK:SearchAddressesPost(data)
   local EntityMod = require("entity.search_addresses_post_entity")
   return EntityMod.new(self, data)

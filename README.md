@@ -10,26 +10,24 @@ This is an unofficial SDK for the Address Lookup Service public API, generated b
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/address-lookup-service` | `npm install @voxgig-sdk/address-lookup-service` |
-| Python | `voxgig-sdk-address-lookup-service` | `pip install voxgig-sdk-address-lookup-service` |
-| PHP | `voxgig-sdk/address-lookup-service` | `composer require voxgig-sdk/address-lookup-service` |
-| Golang | `github.com/voxgig-sdk/address-lookup-service-sdk/go` | `go get github.com/voxgig-sdk/address-lookup-service-sdk/go` |
-| Ruby | `voxgig-sdk-address-lookup-service` | `gem install voxgig-sdk-address-lookup-service` |
-| Lua | `voxgig-sdk-address-lookup-service` | `luarocks install voxgig-sdk-address-lookup-service` |
+| TypeScript | `@voxgig-sdk/address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
+| Python | `voxgig-sdk-address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
+| PHP | `voxgig-sdk/address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/address-lookup-service-sdk/go` | `go get github.com/voxgig-sdk/address-lookup-service-sdk/go@latest` |
+| Ruby | `voxgig-sdk-address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
+| Lua | `voxgig-sdk-address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { AddressLookupServiceSDK } from 'address-lookup-service'
+import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
 
-const client = new AddressLookupServiceSDK({
-  apikey: process.env.ADDRESS-LOOKUP-SERVICE_APIKEY,
-})
+const client = new AddressLookupServiceSDK()
 
 // List all searchaddressesgets
-const searchaddressesgets = await client.SearchAddressesGet().list()
+const searchaddressesgets = await client.searchaddressesget.list()
 console.log(searchaddressesgets.data)
 ```
 
@@ -71,8 +69,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **SearchAddressesGet** |  | `/` |
-| **SearchAddressesPost** |  | `/` |
+| **SearchAddressesGet** | The SearchAddressesGet entity (list). | `/` |
+| **SearchAddressesPost** | The SearchAddressesPost entity (create). | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,15 +80,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from addresslookupservice_sdk import AddressLookupServiceSDK
 
-client = AddressLookupServiceSDK({
-    "apikey": os.environ.get("ADDRESS-LOOKUP-SERVICE_APIKEY"),
-})
+client = AddressLookupServiceSDK()
 
 # List all searchaddressesgets
-searchaddressesgets, err = client.SearchAddressesGet().list()
+searchaddressesgets = client.searchaddressesget.list()
 print(searchaddressesgets)
 ```
 
@@ -100,12 +95,10 @@ print(searchaddressesgets)
 <?php
 require_once 'addresslookupservice_sdk.php';
 
-$client = new AddressLookupServiceSDK([
-    "apikey" => getenv("ADDRESS-LOOKUP-SERVICE_APIKEY"),
-]);
+$client = new AddressLookupServiceSDK();
 
-// List all searchaddressesgets
-[$searchaddressesgets, $err] = $client->SearchAddressesGet()->list();
+// List all searchaddressesgets (throws on error)
+$searchaddressesgets = $client->searchaddressesget()->list();
 print_r($searchaddressesgets);
 ```
 
@@ -114,9 +107,7 @@ print_r($searchaddressesgets);
 ```go
 import sdk "github.com/voxgig-sdk/address-lookup-service-sdk/go"
 
-client := sdk.NewAddressLookupServiceSDK(map[string]any{
-    "apikey": os.Getenv("ADDRESS-LOOKUP-SERVICE_APIKEY"),
-})
+client := sdk.New()
 
 // List all searchaddressesgets
 searchaddressesgets, err := client.SearchAddressesGet(nil).List(nil, nil)
@@ -128,12 +119,10 @@ fmt.Println(searchaddressesgets)
 ```ruby
 require_relative "AddressLookupService_sdk"
 
-client = AddressLookupServiceSDK.new({
-  "apikey" => ENV["ADDRESS-LOOKUP-SERVICE_APIKEY"],
-})
+client = AddressLookupServiceSDK.new
 
 # List all searchaddressesgets
-searchaddressesgets, err = client.SearchAddressesGet().list
+searchaddressesgets = client.searchaddressesget.list
 puts searchaddressesgets
 ```
 
@@ -142,12 +131,10 @@ puts searchaddressesgets
 ```lua
 local sdk = require("address-lookup-service_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("ADDRESS-LOOKUP-SERVICE_APIKEY"),
-})
+local client = sdk.new()
 
 -- List all searchaddressesgets
-local searchaddressesgets, err = client:SearchAddressesGet():list()
+local searchaddressesgets, err = client:searchaddressesget():list()
 print(searchaddressesgets)
 ```
 
@@ -160,7 +147,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AddressLookupServiceSDK.test()
-const result = await client.SearchAddressesGet().load({ id: 'test01' })
+const result = await client.searchaddressesget.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -168,14 +155,14 @@ const result = await client.SearchAddressesGet().load({ id: 'test01' })
 
 ```python
 client = AddressLookupServiceSDK.test()
-result, err = client.SearchAddressesGet().load({"id": "test01"})
+result = client.searchaddressesget.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = AddressLookupServiceSDK::test();
-[$result, $err] = $client->SearchAddressesGet()->load(["id" => "test01"]);
+$result = $client->searchaddressesget()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -191,14 +178,14 @@ result, err := client.SearchAddressesGet(nil).Load(
 
 ```ruby
 client = AddressLookupServiceSDK.test
-result, err = client.SearchAddressesGet().load({ "id" => "test01" })
+result = client.searchaddressesget.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:SearchAddressesGet():load({ id = "test01" })
+local result, err = client:searchaddressesget():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,7 +238,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -260,7 +247,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -278,7 +265,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

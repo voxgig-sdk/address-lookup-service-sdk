@@ -144,16 +144,23 @@ class AddressLookupServiceSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class AddressLookupServiceSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class AddressLookupServiceSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def search_addresses_get(self):
+        """Idiomatic facade: client.search_addresses_get.list() / client.search_addresses_get.load({"id": ...})."""
+        from entity.search_addresses_get_entity import SearchAddressesGetEntity
+        cached = getattr(self, "_search_addresses_get", None)
+        if cached is None:
+            cached = SearchAddressesGetEntity(self, None)
+            self._search_addresses_get = cached
+        return cached
 
     def SearchAddressesGet(self, data=None):
+        # Deprecated: use client.search_addresses_get instead.
         from entity.search_addresses_get_entity import SearchAddressesGetEntity
         return SearchAddressesGetEntity(self, data)
 
 
+    @property
+    def search_addresses_post(self):
+        """Idiomatic facade: client.search_addresses_post.list() / client.search_addresses_post.load({"id": ...})."""
+        from entity.search_addresses_post_entity import SearchAddressesPostEntity
+        cached = getattr(self, "_search_addresses_post", None)
+        if cached is None:
+            cached = SearchAddressesPostEntity(self, None)
+            self._search_addresses_post = cached
+        return cached
+
     def SearchAddressesPost(self, data=None):
+        # Deprecated: use client.search_addresses_post instead.
         from entity.search_addresses_post_entity import SearchAddressesPostEntity
         return SearchAddressesPostEntity(self, data)
 

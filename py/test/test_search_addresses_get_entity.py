@@ -50,8 +50,7 @@ class TestSearchAddressesGetEntity:
         search_addresses_get_ref01_ent = client.SearchAddressesGet(None)
         search_addresses_get_ref01_match = {}
 
-        search_addresses_get_ref01_list_result, err = search_addresses_get_ref01_ent.list(search_addresses_get_ref01_match, None)
-        assert err is None
+        search_addresses_get_ref01_list_result = search_addresses_get_ref01_ent.list(search_addresses_get_ref01_match, None)
         assert isinstance(search_addresses_get_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _search_addresses_get_basic_setup(extra):
         "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID": idmap,
         "ADDRESSLOOKUPSERVICE_TEST_LIVE": "FALSE",
         "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN": "FALSE",
-        "ADDRESSLOOKUPSERVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _search_addresses_get_basic_setup(extra):
     if env.get("ADDRESSLOOKUPSERVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ADDRESSLOOKUPSERVICE_APIKEY"),
             },
             extra or {},
         ])

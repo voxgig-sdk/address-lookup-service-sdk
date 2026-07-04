@@ -50,8 +50,7 @@ class SearchAddressesGetEntityTest extends TestCase
         $search_addresses_get_ref01_ent = $client->SearchAddressesGet(null);
         $search_addresses_get_ref01_match = [];
 
-        [$search_addresses_get_ref01_list_result, $err] = $search_addresses_get_ref01_ent->list($search_addresses_get_ref01_match, null);
-        $this->assertNull($err);
+        $search_addresses_get_ref01_list_result = $search_addresses_get_ref01_ent->list($search_addresses_get_ref01_match, null);
         $this->assertIsArray($search_addresses_get_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function search_addresses_get_basic_setup($extra)
         "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID" => $idmap,
         "ADDRESSLOOKUPSERVICE_TEST_LIVE" => "FALSE",
         "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN" => "FALSE",
-        "ADDRESSLOOKUPSERVICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function search_addresses_get_basic_setup($extra)
     if ($env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ADDRESSLOOKUPSERVICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -45,6 +45,7 @@ class SearchAddressesPostEntity
     end
   end
 
+  # @return [SearchAddressesPost, Hash] the current SearchAddressesPost data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class SearchAddressesPostEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of SearchAddressesPost fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -67,6 +69,11 @@ class SearchAddressesPostEntity
   
 
   
+  # Create a new SearchAddressesPost.
+  #
+  # @param reqdata [SearchAddressesPostCreateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [SearchAddressesPost, Hash] the created SearchAddressesPost; raises AddressLookupServiceError on failure
   def create(reqdata, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

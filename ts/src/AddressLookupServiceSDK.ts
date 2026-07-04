@@ -3,6 +3,8 @@
 import { SearchAddressesGetEntity } from './entity/SearchAddressesGetEntity'
 import { SearchAddressesPostEntity } from './entity/SearchAddressesPostEntity'
 
+export type * from './AddressLookupServiceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class AddressLookupServiceSDK {
 
 
 
+  _search_addresses_get?: SearchAddressesGetEntity
+
+  // Idiomatic facade: `client.search_addresses_get.list()` / `client.search_addresses_get.load({ id })`.
+  get search_addresses_get(): SearchAddressesGetEntity {
+    return (this._search_addresses_get ??= new SearchAddressesGetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.search_addresses_get` instead. */
   SearchAddressesGet(data?: any) {
     const self = this
     return new SearchAddressesGetEntity(self,data)
   }
 
 
+  _search_addresses_post?: SearchAddressesPostEntity
+
+  // Idiomatic facade: `client.search_addresses_post.list()` / `client.search_addresses_post.load({ id })`.
+  get search_addresses_post(): SearchAddressesPostEntity {
+    return (this._search_addresses_post ??= new SearchAddressesPostEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.search_addresses_post` instead. */
   SearchAddressesPost(data?: any) {
     const self = this
     return new SearchAddressesPostEntity(self,data)

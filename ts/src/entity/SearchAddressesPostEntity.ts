@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  SearchAddressesPost,
+  SearchAddressesPostCreateData,
+} from '../AddressLookupServiceTypes'
 
 // TODO: needs Entity superclass
-class SearchAddressesPostEntity extends AddressLookupServiceEntityBase {
+class SearchAddressesPostEntity extends AddressLookupServiceEntityBase<SearchAddressesPost> {
 
   constructor(client: AddressLookupServiceSDK, entopts: any) {
     super(client, entopts)
@@ -34,7 +38,7 @@ class SearchAddressesPostEntity extends AddressLookupServiceEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: SearchAddressesPostCreateData, ctrl?: Control): Promise<SearchAddressesPost> {
 
     const utility = this._utility
     const {
@@ -133,7 +137,9 @@ class SearchAddressesPostEntity extends AddressLookupServiceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<SearchAddressesPost> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

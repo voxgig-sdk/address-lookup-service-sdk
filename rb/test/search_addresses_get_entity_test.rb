@@ -43,8 +43,7 @@ class SearchAddressesGetEntityTest < Minitest::Test
     search_addresses_get_ref01_ent = client.SearchAddressesGet(nil)
     search_addresses_get_ref01_match = {}
 
-    search_addresses_get_ref01_list_result, err = search_addresses_get_ref01_ent.list(search_addresses_get_ref01_match, nil)
-    assert_nil err
+    search_addresses_get_ref01_list_result = search_addresses_get_ref01_ent.list(search_addresses_get_ref01_match, nil)
     assert search_addresses_get_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def search_addresses_get_basic_setup(extra)
     "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID" => idmap,
     "ADDRESSLOOKUPSERVICE_TEST_LIVE" => "FALSE",
     "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN" => "FALSE",
-    "ADDRESSLOOKUPSERVICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def search_addresses_get_basic_setup(extra)
   if env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ADDRESSLOOKUPSERVICE_APIKEY"],
       },
       extra || {},
     ])

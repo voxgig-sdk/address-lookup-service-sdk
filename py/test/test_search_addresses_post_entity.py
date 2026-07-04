@@ -44,9 +44,7 @@ class TestSearchAddressesPostEntity:
         search_addresses_post_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.search_addresses_post"), "search_addresses_post_ref01"))
 
-        search_addresses_post_ref01_data_result, err = search_addresses_post_ref01_ent.create(search_addresses_post_ref01_data, None)
-        assert err is None
-        search_addresses_post_ref01_data = helpers.to_map(search_addresses_post_ref01_data_result)
+        search_addresses_post_ref01_data = helpers.to_map(search_addresses_post_ref01_ent.create(search_addresses_post_ref01_data, None))
         assert search_addresses_post_ref01_data is not None
 
 
@@ -87,7 +85,6 @@ def _search_addresses_post_basic_setup(extra):
         "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID": idmap,
         "ADDRESSLOOKUPSERVICE_TEST_LIVE": "FALSE",
         "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN": "FALSE",
-        "ADDRESSLOOKUPSERVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +95,6 @@ def _search_addresses_post_basic_setup(extra):
     if env.get("ADDRESSLOOKUPSERVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ADDRESSLOOKUPSERVICE_APIKEY"),
             },
             extra or {},
         ])

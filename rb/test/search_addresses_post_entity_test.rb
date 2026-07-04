@@ -36,8 +36,7 @@ class SearchAddressesPostEntityTest < Minitest::Test
     search_addresses_post_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.search_addresses_post"), "search_addresses_post_ref01"))
 
-    search_addresses_post_ref01_data_result, err = search_addresses_post_ref01_ent.create(search_addresses_post_ref01_data, nil)
-    assert_nil err
+    search_addresses_post_ref01_data_result = search_addresses_post_ref01_ent.create(search_addresses_post_ref01_data, nil)
     search_addresses_post_ref01_data = Helpers.to_map(search_addresses_post_ref01_data_result)
     assert !search_addresses_post_ref01_data.nil?
 
@@ -77,7 +76,6 @@ def search_addresses_post_basic_setup(extra)
     "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID" => idmap,
     "ADDRESSLOOKUPSERVICE_TEST_LIVE" => "FALSE",
     "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN" => "FALSE",
-    "ADDRESSLOOKUPSERVICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -89,7 +87,6 @@ def search_addresses_post_basic_setup(extra)
   if env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ADDRESSLOOKUPSERVICE_APIKEY"],
       },
       extra || {},
     ])

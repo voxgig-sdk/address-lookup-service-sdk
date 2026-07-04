@@ -245,11 +245,17 @@ func (sdk *AddressLookupServiceSDK) Direct(fetchargs map[string]any) (map[string
 }
 
 
+// SearchAddressesGet returns a SearchAddressesGet entity bound to this client.
+// Idiomatic usage: client.SearchAddressesGet(nil).List(nil, nil) or
+// client.SearchAddressesGet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AddressLookupServiceSDK) SearchAddressesGet(data map[string]any) AddressLookupServiceEntity {
 	return NewSearchAddressesGetEntityFunc(sdk, data)
 }
 
 
+// SearchAddressesPost returns a SearchAddressesPost entity bound to this client.
+// Idiomatic usage: client.SearchAddressesPost(nil).List(nil, nil) or
+// client.SearchAddressesPost(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AddressLookupServiceSDK) SearchAddressesPost(data map[string]any) AddressLookupServiceEntity {
 	return NewSearchAddressesPostEntityFunc(sdk, data)
 }

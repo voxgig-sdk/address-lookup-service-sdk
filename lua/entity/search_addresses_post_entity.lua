@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata SearchAddressesPostCreateData
+---@param ctrl? table
+---@return SearchAddressesPost
+---@return string? err
 function SearchAddressesPostEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

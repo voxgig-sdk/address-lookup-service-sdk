@@ -9,9 +9,12 @@ The TypeScript SDK for the AddressLookupService API — a type-safe, entity-orie
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/address-lookup-service
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/address-lookup-service-sdk/releases](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AddressLookupServiceSDK } from 'address-lookup-service'
+import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
 
-const client = new AddressLookupServiceSDK({
-  apikey: process.env.ADDRESS-LOOKUP-SERVICE_APIKEY,
-})
+const client = new AddressLookupServiceSDK()
 ```
 
 ### 2. List searchaddressesgets
 
 ```ts
-const result = await client.SearchAddressesGet().list()
+const result = await client.searchaddressesget.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AddressLookupServiceSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.searchaddressesget.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new AddressLookupServiceSDK({ apikey: '...' })
+const client = new AddressLookupServiceSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.searchaddressesget
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new AddressLookupServiceSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new AddressLookupServiceSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ADDRESS-LOOKUP-SERVICE_TEST_LIVE=TRUE
-ADDRESS-LOOKUP-SERVICE_APIKEY=<your-key>
+ADDRESS_LOOKUP_SERVICE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new AddressLookupServiceSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new AddressLookupServiceSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -282,7 +279,7 @@ API path: `/`
 
 ### SearchAddressesGet
 
-Create an instance: `const search_addresses_get = client.SearchAddressesGet()`
+Create an instance: `const search_addresses_get = client.search_addresses_get`
 
 #### Operations
 
@@ -300,13 +297,13 @@ Create an instance: `const search_addresses_get = client.SearchAddressesGet()`
 #### Example: List
 
 ```ts
-const search_addresses_gets = await client.SearchAddressesGet().list()
+const search_addresses_gets = await client.search_addresses_get.list()
 ```
 
 
 ### SearchAddressesPost
 
-Create an instance: `const search_addresses_post = client.SearchAddressesPost()`
+Create an instance: `const search_addresses_post = client.search_addresses_post`
 
 #### Operations
 
@@ -325,7 +322,7 @@ Create an instance: `const search_addresses_post = client.SearchAddressesPost()`
 #### Example: Create
 
 ```ts
-const search_addresses_post = await client.SearchAddressesPost().create({
+const search_addresses_post = await client.search_addresses_post.create({
   q: /* `$STRING` */,
 })
 ```
@@ -388,7 +385,7 @@ address-lookup-service/
 Import the SDK from the package root:
 
 ```ts
-import { AddressLookupServiceSDK } from 'address-lookup-service'
+import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
 ```
 
 ### Entity state
@@ -398,11 +395,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const searchaddressesget = client.searchaddressesget
+await searchaddressesget.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// searchaddressesget.data() now returns the loaded searchaddressesget data
+// searchaddressesget.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

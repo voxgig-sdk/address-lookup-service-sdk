@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  SearchAddressesGet,
+  SearchAddressesGetListMatch,
+} from '../AddressLookupServiceTypes'
 
 // TODO: needs Entity superclass
-class SearchAddressesGetEntity extends AddressLookupServiceEntityBase {
+class SearchAddressesGetEntity extends AddressLookupServiceEntityBase<SearchAddressesGet> {
 
   constructor(client: AddressLookupServiceSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class SearchAddressesGetEntity extends AddressLookupServiceEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: SearchAddressesGetListMatch, ctrl?: Control): Promise<SearchAddressesGet[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class SearchAddressesGetEntity extends AddressLookupServiceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<SearchAddressesGet[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

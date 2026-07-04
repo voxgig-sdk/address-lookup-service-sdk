@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID': idmap,
     'ADDRESS_LOOKUP_SERVICE_TEST_LIVE': 'FALSE',
     'ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN': 'FALSE',
-    'ADDRESS_LOOKUP_SERVICE_APIKEY': 'NONE',
   })
 
   idmap = env['ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AddressLookupServiceSDK(merge([
       {
-        apikey: env.ADDRESS_LOOKUP_SERVICE_APIKEY,
       },
       extra
     ]))
