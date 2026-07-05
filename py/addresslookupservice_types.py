@@ -35,7 +35,10 @@ class SearchAddressesPost(SearchAddressesPostRequired, total=False):
     suggested_address: list
 
 
-class SearchAddressesPostCreateData(TypedDict, total=False):
-    n: int
+class SearchAddressesPostCreateDataRequired(TypedDict):
     q: str
+
+
+class SearchAddressesPostCreateData(SearchAddressesPostCreateDataRequired, total=False):
+    n: int
     suggested_address: list

@@ -21,7 +21,7 @@ SearchAddressesGet = Struct.new(
   keyword_init: true
 )
 
-# Match filter for SearchAddressesGet#list (any subset of SearchAddressesGet fields).
+# Request payload for SearchAddressesGet#list.
 #
 # @!attribute [rw] address
 #   @return [Hash, nil]
@@ -51,13 +51,13 @@ SearchAddressesPost = Struct.new(
   keyword_init: true
 )
 
-# Match filter for SearchAddressesPost#create (any subset of SearchAddressesPost fields).
+# Request payload for SearchAddressesPost#create.
 #
 # @!attribute [rw] n
 #   @return [Integer, nil]
 #
 # @!attribute [rw] q
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] suggested_address
 #   @return [Array, nil]

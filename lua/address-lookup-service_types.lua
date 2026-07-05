@@ -11,6 +11,8 @@
 ---@field validation_information? table
 
 ---@class SearchAddressesGetListMatch
+---@field address? table
+---@field validation_information? table
 
 ---@class SearchAddressesPost
 ---@field n? number
@@ -18,6 +20,9 @@
 ---@field suggested_address? table
 
 ---@class SearchAddressesPostCreateData
+---@field n? number
+---@field q string
+---@field suggested_address? table
 
 local M = {}
 

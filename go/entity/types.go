@@ -14,8 +14,7 @@ type SearchAddressesGet struct {
 	ValidationInformation *map[string]any `json:"validation_information,omitempty"`
 }
 
-// SearchAddressesGetListMatch mirrors the search_addresses_get fields as an all-optional match
-// filter (Go analog of Partial<SearchAddressesGet>).
+// SearchAddressesGetListMatch is the typed request payload for SearchAddressesGet.ListTyped.
 type SearchAddressesGetListMatch struct {
 	Address *map[string]any `json:"address,omitempty"`
 	ValidationInformation *map[string]any `json:"validation_information,omitempty"`
@@ -28,11 +27,10 @@ type SearchAddressesPost struct {
 	SuggestedAddress *[]any `json:"suggested_address,omitempty"`
 }
 
-// SearchAddressesPostCreateData mirrors the search_addresses_post fields as an all-optional match
-// filter (Go analog of Partial<SearchAddressesPost>).
+// SearchAddressesPostCreateData is the typed request payload for SearchAddressesPost.CreateTyped.
 type SearchAddressesPostCreateData struct {
 	N *int `json:"n,omitempty"`
-	Q *string `json:"q,omitempty"`
+	Q string `json:"q"`
 	SuggestedAddress *[]any `json:"suggested_address,omitempty"`
 }
 

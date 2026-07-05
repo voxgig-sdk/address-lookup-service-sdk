@@ -221,13 +221,13 @@ class AddressLookupServiceSDK:
 
 
     def SearchAddressesGet(self, data=None) -> "SearchAddressesGetEntity":
-        """Entity factory: client.SearchAddressesGet().list({}) / client.SearchAddressesGet().load({"id": ...})."""
+        """Entity factory: client.SearchAddressesGet().list() / client.SearchAddressesGet().load({"id": ...})."""
         from entity.search_addresses_get_entity import SearchAddressesGetEntity
         return SearchAddressesGetEntity(self, data)
 
 
     def SearchAddressesPost(self, data=None) -> "SearchAddressesPostEntity":
-        """Entity factory: client.SearchAddressesPost().list({}) / client.SearchAddressesPost().load({"id": ...})."""
+        """Entity factory: client.SearchAddressesPost().list() / client.SearchAddressesPost().load({"id": ...})."""
         from entity.search_addresses_post_entity import SearchAddressesPostEntity
         return SearchAddressesPostEntity(self, data)
 

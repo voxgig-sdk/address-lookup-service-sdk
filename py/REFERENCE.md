@@ -8,7 +8,7 @@ Complete API reference for the AddressLookupService Python SDK.
 ### Constructor
 
 ```python
-from address-lookup-service_sdk import AddressLookupServiceSDK
+from addresslookupservice_sdk import AddressLookupServiceSDK
 
 client = AddressLookupServiceSDK(options)
 ```
@@ -91,17 +91,17 @@ search_addresses_get = client.SearchAddressesGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `validation_information` | ``$OBJECT`` | No |  |
+| `address` | `dict` | No |  |
+| `validation_information` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.SearchAddressesGet().list({})
+results = client.SearchAddressesGet().list()
 for search_addresses_get in results:
     print(search_addresses_get)
 ```
@@ -145,9 +145,9 @@ search_addresses_post = client.SearchAddressesPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `n` | ``$INTEGER`` | No |  |
-| `q` | ``$STRING`` | Yes |  |
-| `suggested_address` | ``$ARRAY`` | No |  |
+| `n` | `int` | No |  |
+| `q` | `str` | Yes |  |
+| `suggested_address` | `list` | No |  |
 
 ### Operations
 
@@ -157,7 +157,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.SearchAddressesPost().create({
-    "q": ...,  # `$STRING`
+    "q": "example",  # str
 })
 ```
 

@@ -19,7 +19,7 @@ class SearchAddressesGet
     public ?array $validation_information = null;
 }
 
-/** Match filter for SearchAddressesGet#list (any subset of SearchAddressesGet fields). */
+/** Request payload for SearchAddressesGet#list. */
 class SearchAddressesGetListMatch
 {
     public ?array $address = null;
@@ -34,11 +34,11 @@ class SearchAddressesPost
     public ?array $suggested_address = null;
 }
 
-/** Match filter for SearchAddressesPost#create (any subset of SearchAddressesPost fields). */
+/** Request payload for SearchAddressesPost#create. */
 class SearchAddressesPostCreateData
 {
     public ?int $n = null;
-    public ?string $q = null;
+    public string $q;
     public ?array $suggested_address = null;
 }
 

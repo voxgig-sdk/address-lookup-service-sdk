@@ -101,8 +101,8 @@ search_addresses_get := client.SearchAddressesGet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `validation_information` | ``$OBJECT`` | No |  |
+| `address` | `map[string]any` | No |  |
+| `validation_information` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -148,9 +148,9 @@ search_addresses_post := client.SearchAddressesPost(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `n` | ``$INTEGER`` | No |  |
-| `q` | ``$STRING`` | Yes |  |
-| `suggested_address` | ``$ARRAY`` | No |  |
+| `n` | `int` | No |  |
+| `q` | `string` | Yes |  |
+| `suggested_address` | `[]any` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.SearchAddressesPost(nil).Create(map[string]any{
-    "q": /* `$STRING` */,
+    "q": /* string */,
 }, nil)
 ```
 

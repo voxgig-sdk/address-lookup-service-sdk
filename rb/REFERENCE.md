@@ -8,7 +8,7 @@ Complete API reference for the AddressLookupService Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'address-lookup-service_sdk'
+require_relative 'AddressLookupService_sdk'
 
 client = AddressLookupServiceSDK.new(options)
 ```
@@ -97,17 +97,17 @@ search_addresses_get = client.SearchAddressesGet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `validation_information` | ``$OBJECT`` | No |  |
+| `address` | `Hash` | No |  |
+| `validation_information` | `Hash` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.SearchAddressesGet.list(nil)
+results = client.SearchAddressesGet.list
 ```
 
 ### Common Methods
@@ -150,9 +150,9 @@ search_addresses_post = client.SearchAddressesPost
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `n` | ``$INTEGER`` | No |  |
-| `q` | ``$STRING`` | Yes |  |
-| `suggested_address` | ``$ARRAY`` | No |  |
+| `n` | `Integer` | No |  |
+| `q` | `String` | Yes |  |
+| `suggested_address` | `Array` | No |  |
 
 ### Operations
 
@@ -162,7 +162,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.SearchAddressesPost.create({
-  "q" => # `$STRING`,
+  "q" => "example", # String
 })
 ```
 

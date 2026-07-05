@@ -10,7 +10,10 @@ export interface SearchAddressesGet {
   validation_information?: Record<string, any>
 }
 
-export type SearchAddressesGetListMatch = Partial<SearchAddressesGet>
+export interface SearchAddressesGetListMatch {
+  address?: Record<string, any>
+  validation_information?: Record<string, any>
+}
 
 export interface SearchAddressesPost {
   n?: number
@@ -18,5 +21,9 @@ export interface SearchAddressesPost {
   suggested_address?: any[]
 }
 
-export type SearchAddressesPostCreateData = Partial<SearchAddressesPost>
+export interface SearchAddressesPostCreateData {
+  n?: number
+  q: string
+  suggested_address?: any[]
+}
 

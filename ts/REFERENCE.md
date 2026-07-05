@@ -128,8 +128,8 @@ const search_addresses_get = client.SearchAddressesGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `validation_information` | ``$OBJECT`` | No |  |
+| `address` | `Record<string, any>` | No |  |
+| `validation_information` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -179,9 +179,9 @@ const search_addresses_post = client.SearchAddressesPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `n` | ``$INTEGER`` | No |  |
-| `q` | ``$STRING`` | Yes |  |
-| `suggested_address` | ``$ARRAY`` | No |  |
+| `n` | `number` | No |  |
+| `q` | `string` | Yes |  |
+| `suggested_address` | `any[]` | No |  |
 
 ### Operations
 
@@ -191,7 +191,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.SearchAddressesPost().create({
-  q: /* `$STRING` */,
+  q: /* string */,
 })
 ```
 

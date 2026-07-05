@@ -94,8 +94,8 @@ local search_addresses_get = client:SearchAddressesGet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `validation_information` | ``$OBJECT`` | No |  |
+| `address` | `table` | No |  |
+| `validation_information` | `table` | No |  |
 
 ### Operations
 
@@ -147,9 +147,9 @@ local search_addresses_post = client:SearchAddressesPost(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `n` | ``$INTEGER`` | No |  |
-| `q` | ``$STRING`` | Yes |  |
-| `suggested_address` | ``$ARRAY`` | No |  |
+| `n` | `number` | No |  |
+| `q` | `string` | Yes |  |
+| `suggested_address` | `table` | No |  |
 
 ### Operations
 
@@ -159,7 +159,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:SearchAddressesPost():create({
-  q = --[[ `$STRING` ]],
+  q = --[[ string ]],
 })
 ```
 
