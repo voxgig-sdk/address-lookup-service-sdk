@@ -357,7 +357,7 @@ Create an instance: `const search_addresses_post = client.SearchAddressesPost()`
 
 ```ts
 const search_addresses_post = await client.SearchAddressesPost().create({
-  q: /* string */,
+  q: 'example_q',
 })
 ```
 

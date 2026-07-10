@@ -16,10 +16,10 @@ main: {
           url: "https://www.als.ogcio.gov.hk/lookup"
         }
       ]
+      summary: "The Address Lookup Service API provides a means for users to retrieve address records based on input address information."
       termsOfService: "https://data.gov.hk/en/terms-and-conditions"
       title: "Address Lookup Service"
       version: "1.0.0"
+      website: "https://data.gov.hk/en-data/dataset/hk-dpo-als_01-als/resource/210c2cc9-1172-4529-a82b-f10107513e9c"
     }
   }
-}
-

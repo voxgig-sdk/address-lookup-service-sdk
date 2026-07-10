@@ -162,7 +162,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.SearchAddressesPost.create({
-  "q" => "example", # String
+  "q" => "example_q", # String
 })
 ```
 

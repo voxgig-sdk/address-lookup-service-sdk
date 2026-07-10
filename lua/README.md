@@ -304,7 +304,7 @@ Create an instance: `local search_addresses_post = client:SearchAddressesPost(ni
 
 ```lua
 local search_addresses_post, err = client:SearchAddressesPost():create({
-  q = nil, -- string
+  q = "example_q", -- string
 })
 ```
 

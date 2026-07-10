@@ -191,7 +191,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.SearchAddressesPost().create({
-  q: /* string */,
+  q: 'example_q',
 })
 ```
 

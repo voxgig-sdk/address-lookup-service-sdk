@@ -157,7 +157,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.SearchAddressesPost().create({
-    "q": "example",  # str
+    "q": "example_q",  # str
 })
 ```
 

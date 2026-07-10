@@ -314,7 +314,7 @@ Create an instance: `search_addresses_post = client.SearchAddressesPost()`
 
 ```python
 search_addresses_post = client.SearchAddressesPost().create({
-    "q": "example",  # str
+    "q": "example_q",  # str
 })
 ```
 

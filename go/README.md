@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List searchaddressesget records — the value is the array of records itself.
-    searchaddressesgets, err := client.SearchAddressesGet(nil).List(nil, nil)
+    // List searchAddressesGet records — the value is the array of records itself.
+    searchAddressesGets, err := client.SearchAddressesGet(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range searchaddressesgets.([]any) {
+    for _, item := range searchAddressesGets.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-searchaddressesget, err := client.SearchAddressesGet(nil).List(
+searchAddressesGet, err := client.SearchAddressesGet(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(searchaddressesget) // the returned mock data
+fmt.Println(searchAddressesGet) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -250,9 +250,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    searchaddressesget, err := client.SearchAddressesGet(nil).List(map[string]any{/* fields */}, nil)
+    searchAddressesGet, err := client.SearchAddressesGet(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // searchaddressesget is the returned record
+    // searchAddressesGet is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -289,7 +289,7 @@ API path: `/`
 
 ### SearchAddressesGet
 
-Create an instance: `search_addresses_get := client.SearchAddressesGet(nil)`
+Create an instance: `searchAddressesGet := client.SearchAddressesGet(nil)`
 
 #### Operations
 
@@ -307,17 +307,17 @@ Create an instance: `search_addresses_get := client.SearchAddressesGet(nil)`
 #### Example: List
 
 ```go
-search_addresses_gets, err := client.SearchAddressesGet(nil).List(nil, nil)
+searchAddressesGets, err := client.SearchAddressesGet(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(search_addresses_gets) // the array of records
+fmt.Println(searchAddressesGets) // the array of records
 ```
 
 
 ### SearchAddressesPost
 
-Create an instance: `search_addresses_post := client.SearchAddressesPost(nil)`
+Create an instance: `searchAddressesPost := client.SearchAddressesPost(nil)`
 
 #### Operations
 
@@ -337,8 +337,12 @@ Create an instance: `search_addresses_post := client.SearchAddressesPost(nil)`
 
 ```go
 result, err := client.SearchAddressesPost(nil).Create(map[string]any{
-    "q": /* string */,
+    "q": "example_q",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

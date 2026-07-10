@@ -309,7 +309,7 @@ Create an instance: `search_addresses_post = client.SearchAddressesPost`
 
 ```ruby
 search_addresses_post = client.SearchAddressesPost.create({
-  "q" => "example", # String
+  "q" => "example_q", # String
 })
 ```
 

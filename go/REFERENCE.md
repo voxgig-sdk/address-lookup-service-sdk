@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## SearchAddressesGetEntity
 
 ```go
-search_addresses_get := client.SearchAddressesGet(nil)
+searchAddressesGet := client.SearchAddressesGet(nil)
+fmt.Println(searchAddressesGet.GetName()) // "search_addresses_get"
 ```
 
 ### Fields
@@ -112,6 +113,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.SearchAddressesGet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -141,7 +146,8 @@ Return the entity name.
 ## SearchAddressesPostEntity
 
 ```go
-search_addresses_post := client.SearchAddressesPost(nil)
+searchAddressesPost := client.SearchAddressesPost(nil)
+fmt.Println(searchAddressesPost.GetName()) // "search_addresses_post"
 ```
 
 ### Fields
@@ -160,8 +166,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.SearchAddressesPost(nil).Create(map[string]any{
-    "q": /* string */,
+    "q": "example_q",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
