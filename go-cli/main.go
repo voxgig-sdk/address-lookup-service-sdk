@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewAddressLookupServiceSDK(nil)
+	// Configure from the environment: ADDRESS_LOOKUP_SERVICE_APIKEY carries the API key and
+	// ADDRESS_LOOKUP_SERVICE_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("ADDRESS_LOOKUP_SERVICE_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("ADDRESS_LOOKUP_SERVICE_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewAddressLookupServiceSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
