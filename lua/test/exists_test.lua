@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- AddressLookupService SDK exists test
 
 local sdk = require("address-lookup-service_sdk")
 

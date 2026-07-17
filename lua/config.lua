@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- AddressLookupService SDK configuration
 
 local function make_config()
   return {
