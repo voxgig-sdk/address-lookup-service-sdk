@@ -10,61 +10,61 @@
 
 # SearchAddressesGet entity data model.
 #
-# @!attribute [rw] address
+# @!attribute [rw] Address
 #   @return [Hash, nil]
 #
-# @!attribute [rw] validation_information
+# @!attribute [rw] ValidationInformation
 #   @return [Hash, nil]
 SearchAddressesGet = Struct.new(
-  :address,
-  :validation_information,
+  :Address,
+  :ValidationInformation,
   keyword_init: true
 )
 
 # Request payload for SearchAddressesGet#list.
 #
-# @!attribute [rw] address
+# @!attribute [rw] Address
 #   @return [Hash, nil]
 #
-# @!attribute [rw] validation_information
+# @!attribute [rw] ValidationInformation
 #   @return [Hash, nil]
 SearchAddressesGetListMatch = Struct.new(
-  :address,
-  :validation_information,
+  :Address,
+  :ValidationInformation,
   keyword_init: true
 )
 
 # SearchAddressesPost entity data model.
 #
+# @!attribute [rw] SuggestedAddress
+#   @return [Array, nil]
+#
 # @!attribute [rw] n
 #   @return [Integer, nil]
 #
 # @!attribute [rw] q
 #   @return [String]
-#
-# @!attribute [rw] suggested_address
-#   @return [Array, nil]
 SearchAddressesPost = Struct.new(
+  :SuggestedAddress,
   :n,
   :q,
-  :suggested_address,
   keyword_init: true
 )
 
 # Request payload for SearchAddressesPost#create.
 #
+# @!attribute [rw] SuggestedAddress
+#   @return [Array, nil]
+#
 # @!attribute [rw] n
 #   @return [Integer, nil]
 #
 # @!attribute [rw] q
 #   @return [String]
-#
-# @!attribute [rw] suggested_address
-#   @return [Array, nil]
 SearchAddressesPostCreateData = Struct.new(
+  :SuggestedAddress,
   :n,
   :q,
-  :suggested_address,
   keyword_init: true
 )
 

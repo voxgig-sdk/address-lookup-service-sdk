@@ -29,7 +29,7 @@ describe("SearchAddressesPostEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -41,7 +41,7 @@ describe("SearchAddressesPostEntity", function()
 
     local search_addresses_post_ref01_data_result, err = search_addresses_post_ref01_ent:create(search_addresses_post_ref01_data, nil)
     assert.is_nil(err)
-    search_addresses_post_ref01_data = helpers.to_map(search_addresses_post_ref01_data_result)
+    search_addresses_post_ref01_data = helpers.to_map(type(search_addresses_post_ref01_data_result) == 'table' and search_addresses_post_ref01_data_result.data_get and search_addresses_post_ref01_data_result:data_get() or search_addresses_post_ref01_data_result)
     assert.is_not_nil(search_addresses_post_ref01_data)
 
   end)
@@ -79,22 +79,22 @@ function search_addresses_post_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID")
+  local entid_env_raw = os.getenv("ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID"] = idmap,
-    ["ADDRESSLOOKUPSERVICE_TEST_LIVE"] = "FALSE",
-    ["ADDRESSLOOKUPSERVICE_TEST_EXPLAIN"] = "FALSE",
+    ["ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID"] = idmap,
+    ["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] = "FALSE",
+    ["ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID"])
+    env["ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE" then
+  if env["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -103,13 +103,13 @@ function search_addresses_post_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
+  local live = env["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["ADDRESSLOOKUPSERVICE_TEST_EXPLAIN"] == "TRUE",
+    explain = env["ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

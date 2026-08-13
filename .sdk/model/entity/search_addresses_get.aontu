@@ -6,12 +6,12 @@ main: kit: entity: search_addresses_get: {
 
   fields: [
     {
-      name: "address"
+      name: "Address"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "validation_information"
+      name: "ValidationInformation"
       req: false
       type: "`$OBJECT`"
     }
@@ -53,7 +53,7 @@ main: kit: entity: search_addresses_get: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.SuggestedAddress`"
           }
         }
       ]

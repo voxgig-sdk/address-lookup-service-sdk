@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AddressLookupServiceSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 searchaddressesget = client.SearchAddressesGet().list()
 # searchaddressesget contains the mock response record
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -244,8 +245,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `validation_information` |  |
+| `Address` |  |
+| `ValidationInformation` |  |
 
 Operations: List.
 
@@ -255,9 +256,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `SuggestedAddress` |  |
 | `n` |  |
 | `q` |  |
-| `suggested_address` |  |
 
 Operations: Create.
 
@@ -282,8 +283,8 @@ Create an instance: `search_addresses_get = client.SearchAddressesGet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `dict` |  |
-| `validation_information` | `dict` |  |
+| `Address` | `dict` |  |
+| `ValidationInformation` | `dict` |  |
 
 #### Example: List
 
@@ -306,9 +307,9 @@ Create an instance: `search_addresses_post = client.SearchAddressesPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `SuggestedAddress` | `list` |  |
 | `n` | `int` |  |
 | `q` | `str` |  |
-| `suggested_address` | `list` |  |
 
 #### Example: Create
 

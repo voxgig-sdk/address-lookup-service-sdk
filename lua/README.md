@@ -43,7 +43,7 @@ local searchaddressesgets, err = client:SearchAddressesGet():list()
 if err then error(err) end
 
 for _, item in ipairs(searchaddressesgets) do
-  print(item["address"])
+  print(item["Address"])
 end
 ```
 
@@ -221,9 +221,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local search_addresses_get, err = client:SearchAddressesGet():load()
+    local search_addresses_get, err = client:SearchAddressesGet():list()
     if err then error(err) end
-    -- search_addresses_get is the loaded record
+    -- search_addresses_get is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -234,8 +234,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `validation_information` |  |
+| `Address` |  |
+| `ValidationInformation` |  |
 
 Operations: List.
 
@@ -245,9 +245,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `SuggestedAddress` |  |
 | `n` |  |
 | `q` |  |
-| `suggested_address` |  |
 
 Operations: Create.
 
@@ -272,8 +272,8 @@ Create an instance: `local search_addresses_get = client:SearchAddressesGet(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `table` |  |
-| `validation_information` | `table` |  |
+| `Address` | `table` |  |
+| `ValidationInformation` | `table` |  |
 
 #### Example: List
 
@@ -296,9 +296,9 @@ Create an instance: `local search_addresses_post = client:SearchAddressesPost(ni
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `SuggestedAddress` | `table` |  |
 | `n` | `number` |  |
 | `q` | `string` |  |
-| `suggested_address` | `table` |  |
 
 #### Example: Create
 

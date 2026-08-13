@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# AddressLookupService SDK exists test
 
 import pytest
 from addresslookupservice_sdk import AddressLookupServiceSDK

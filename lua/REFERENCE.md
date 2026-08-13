@@ -94,8 +94,8 @@ local search_addresses_get = client:SearchAddressesGet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `table` | No |  |
-| `validation_information` | `table` | No |  |
+| `Address` | `table` | No |  |
+| `ValidationInformation` | `table` | No |  |
 
 ### Operations
 
@@ -147,9 +147,9 @@ local search_addresses_post = client:SearchAddressesPost(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `SuggestedAddress` | `table` | No |  |
 | `n` | `number` | No |  |
 | `q` | `string` | Yes |  |
-| `suggested_address` | `table` | No |  |
 
 ### Operations
 

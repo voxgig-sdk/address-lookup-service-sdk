@@ -102,8 +102,8 @@ fmt.Println(searchAddressesGet.GetName()) // "search_addresses_get"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `map[string]any` | No |  |
-| `validation_information` | `map[string]any` | No |  |
+| `Address` | `map[string]any` | No |  |
+| `ValidationInformation` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -154,9 +154,9 @@ fmt.Println(searchAddressesPost.GetName()) // "search_addresses_post"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `SuggestedAddress` | `[]any` | No |  |
 | `n` | `int` | No |  |
 | `q` | `string` | Yes |  |
-| `suggested_address` | `[]any` | No |  |
 
 ### Operations
 

@@ -26,8 +26,8 @@ import {
 describe('SearchAddressesGetEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ADDRESSLOOKUPSERVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ADDRESSLOOKUPSERVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ADDRESS_LOOKUP_SERVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ADDRESS_LOOKUP_SERVICE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AddressLookupServiceSDK.test()
@@ -63,7 +63,7 @@ describe('SearchAddressesGetEntity', async () => {
     const search_addresses_get_ref01_ent = client.SearchAddressesGet()
     const search_addresses_get_ref01_match: any = {}
 
-    const search_addresses_get_ref01_list = await search_addresses_get_ref01_ent.list(search_addresses_get_ref01_match)
+    const search_addresses_get_ref01_list = (await search_addresses_get_ref01_ent.list(search_addresses_get_ref01_match)).map((e: any) => e.data())
 
 
   })

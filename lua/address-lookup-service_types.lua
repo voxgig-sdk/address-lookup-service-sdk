@@ -7,22 +7,22 @@
 -- edit by hand.
 
 ---@class SearchAddressesGet
----@field address? table
----@field validation_information? table
+---@field Address? table
+---@field ValidationInformation? table
 
 ---@class SearchAddressesGetListMatch
----@field address? table
----@field validation_information? table
+---@field Address? table
+---@field ValidationInformation? table
 
 ---@class SearchAddressesPost
+---@field SuggestedAddress? table
 ---@field n? number
 ---@field q string
----@field suggested_address? table
 
 ---@class SearchAddressesPostCreateData
+---@field SuggestedAddress? table
 ---@field n? number
 ---@field q string
----@field suggested_address? table
 
 local M = {}
 

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'AddressLookupService',
   }
 
 
@@ -59,14 +59,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "address",
+          "name": "Address",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "validation_information",
+          "name": "ValidationInformation",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 1
@@ -102,6 +102,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/",
               "parts": [],
@@ -113,7 +114,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.SuggestedAddress`"
               },
               "index$": 0
             }
@@ -129,23 +130,23 @@ class Config {
       "fields": [
         {
           "active": true,
+          "name": "SuggestedAddress",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 0
+        },
+        {
+          "active": true,
           "name": "n",
           "req": false,
           "type": "`$INTEGER`",
-          "index$": 0
+          "index$": 1
         },
         {
           "active": true,
           "name": "q",
           "req": true,
           "type": "`$STRING`",
-          "index$": 1
-        },
-        {
-          "active": true,
-          "name": "suggested_address",
-          "req": false,
-          "type": "`$ARRAY`",
           "index$": 2
         }
       ],
@@ -158,6 +159,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/",
               "parts": [],

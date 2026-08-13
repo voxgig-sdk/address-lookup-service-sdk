@@ -38,7 +38,7 @@ try {
     // list() returns an array of SearchAddressesGet records — iterate directly.
     $searchaddressesgets = $client->SearchAddressesGet()->list();
     foreach ($searchaddressesgets as $item) {
-        echo $item["address"] . "\n";
+        echo $item["Address"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AddressLookupServiceSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $searchaddressesget = $client->SearchAddressesGet()->list();
 print_r($searchaddressesget);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -248,8 +249,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `validation_information` |  |
+| `Address` |  |
+| `ValidationInformation` |  |
 
 Operations: List.
 
@@ -259,9 +260,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `SuggestedAddress` |  |
 | `n` |  |
 | `q` |  |
-| `suggested_address` |  |
 
 Operations: Create.
 
@@ -286,8 +287,8 @@ Create an instance: `$search_addresses_get = $client->SearchAddressesGet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `array` |  |
-| `validation_information` | `array` |  |
+| `Address` | `array` |  |
+| `ValidationInformation` | `array` |  |
 
 #### Example: List
 
@@ -311,9 +312,9 @@ Create an instance: `$search_addresses_post = $client->SearchAddressesPost();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `SuggestedAddress` | `array` |  |
 | `n` | `int` |  |
 | `q` | `string` |  |
-| `suggested_address` | `array` |  |
 
 #### Example: Create
 

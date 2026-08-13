@@ -96,8 +96,8 @@ $search_addresses_get = $client->SearchAddressesGet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `array` | No |  |
-| `validation_information` | `array` | No |  |
+| `Address` | `array` | No |  |
+| `ValidationInformation` | `array` | No |  |
 
 ### Operations
 
@@ -149,9 +149,9 @@ $search_addresses_post = $client->SearchAddressesPost();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `SuggestedAddress` | `array` | No |  |
 | `n` | `int` | No |  |
 | `q` | `string` | Yes |  |
-| `suggested_address` | `array` | No |  |
 
 ### Operations
 

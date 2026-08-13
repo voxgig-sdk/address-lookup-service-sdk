@@ -26,8 +26,8 @@ import {
 describe('SearchAddressesPostEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ADDRESSLOOKUPSERVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ADDRESSLOOKUPSERVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ADDRESS_LOOKUP_SERVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ADDRESS_LOOKUP_SERVICE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AddressLookupServiceSDK.test()
@@ -62,7 +62,7 @@ describe('SearchAddressesPostEntity', async () => {
     const search_addresses_post_ref01_ent = client.SearchAddressesPost()
     let search_addresses_post_ref01_data = setup.data.new.search_addresses_post['search_addresses_post_ref01']
 
-    search_addresses_post_ref01_data = await search_addresses_post_ref01_ent.create(search_addresses_post_ref01_data)
+    search_addresses_post_ref01_data = (await search_addresses_post_ref01_ent.create(search_addresses_post_ref01_data)).data()
     assert(null != search_addresses_post_ref01_data)
 
 

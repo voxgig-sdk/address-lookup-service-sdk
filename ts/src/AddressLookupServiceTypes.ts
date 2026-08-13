@@ -6,24 +6,24 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface SearchAddressesGet {
-  address?: Record<string, any>
-  validation_information?: Record<string, any>
+  Address?: Record<string, any>
+  ValidationInformation?: Record<string, any>
 }
 
 export interface SearchAddressesGetListMatch {
-  address?: Record<string, any>
-  validation_information?: Record<string, any>
+  Address?: Record<string, any>
+  ValidationInformation?: Record<string, any>
 }
 
 export interface SearchAddressesPost {
+  SuggestedAddress?: any[]
   n?: number
   q: string
-  suggested_address?: any[]
 }
 
 export interface SearchAddressesPostCreateData {
+  SuggestedAddress?: any[]
   n?: number
   q: string
-  suggested_address?: any[]
 }
 

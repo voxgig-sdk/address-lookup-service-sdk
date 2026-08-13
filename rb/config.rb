@@ -28,14 +28,14 @@ module AddressLookupServiceConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "address",
+              "name" => "Address",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "validation_information",
+              "name" => "ValidationInformation",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 1,
@@ -71,6 +71,7 @@ module AddressLookupServiceConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "parts" => [],
@@ -82,7 +83,7 @@ module AddressLookupServiceConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.SuggestedAddress`",
                   },
                   "index$" => 0,
                 },
@@ -98,23 +99,23 @@ module AddressLookupServiceConfig
           "fields" => [
             {
               "active" => true,
+              "name" => "SuggestedAddress",
+              "req" => false,
+              "type" => "`$ARRAY`",
+              "index$" => 0,
+            },
+            {
+              "active" => true,
               "name" => "n",
               "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 0,
+              "index$" => 1,
             },
             {
               "active" => true,
               "name" => "q",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 1,
-            },
-            {
-              "active" => true,
-              "name" => "suggested_address",
-              "req" => false,
-              "type" => "`$ARRAY`",
               "index$" => 2,
             },
           ],
@@ -127,6 +128,7 @@ module AddressLookupServiceConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/",
                   "parts" => [],

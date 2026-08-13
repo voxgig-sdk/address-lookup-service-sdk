@@ -27,14 +27,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "address",
+            ["name"] = "Address",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "validation_information",
+            ["name"] = "ValidationInformation",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 1,
@@ -70,6 +70,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["parts"] = {},
@@ -81,7 +82,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.SuggestedAddress`",
                 },
                 ["index$"] = 0,
               },
@@ -97,23 +98,23 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
+            ["name"] = "SuggestedAddress",
+            ["req"] = false,
+            ["type"] = "`$ARRAY`",
+            ["index$"] = 0,
+          },
+          {
+            ["active"] = true,
             ["name"] = "n",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
+            ["index$"] = 1,
           },
           {
             ["active"] = true,
             ["name"] = "q",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "suggested_address",
-            ["req"] = false,
-            ["type"] = "`$ARRAY`",
             ["index$"] = 2,
           },
         },
@@ -126,6 +127,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/",
                 ["parts"] = {},

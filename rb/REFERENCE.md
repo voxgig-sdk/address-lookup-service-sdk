@@ -97,8 +97,8 @@ search_addresses_get = client.SearchAddressesGet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `Hash` | No |  |
-| `validation_information` | `Hash` | No |  |
+| `Address` | `Hash` | No |  |
+| `ValidationInformation` | `Hash` | No |  |
 
 ### Operations
 
@@ -150,9 +150,9 @@ search_addresses_post = client.SearchAddressesPost
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `SuggestedAddress` | `Array` | No |  |
 | `n` | `Integer` | No |  |
 | `q` | `String` | Yes |  |
-| `suggested_address` | `Array` | No |  |
 
 ### Operations
 

@@ -15,30 +15,30 @@ declare(strict_types=1);
 /** SearchAddressesGet entity data model. */
 class SearchAddressesGet
 {
-    public ?array $address = null;
-    public ?array $validation_information = null;
+    public ?array $Address = null;
+    public ?array $ValidationInformation = null;
 }
 
 /** Request payload for SearchAddressesGet#list. */
 class SearchAddressesGetListMatch
 {
-    public ?array $address = null;
-    public ?array $validation_information = null;
+    public ?array $Address = null;
+    public ?array $ValidationInformation = null;
 }
 
 /** SearchAddressesPost entity data model. */
 class SearchAddressesPost
 {
+    public ?array $SuggestedAddress = null;
     public ?int $n = null;
     public string $q;
-    public ?array $suggested_address = null;
 }
 
 /** Request payload for SearchAddressesPost#create. */
 class SearchAddressesPostCreateData
 {
+    public ?array $SuggestedAddress = null;
     public ?int $n = null;
     public string $q;
-    public ?array $suggested_address = null;
 }
 

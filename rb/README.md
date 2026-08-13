@@ -37,7 +37,7 @@ begin
   # list returns an Array of SearchAddressesGet records — iterate directly.
   searchaddressesgets = client.SearchAddressesGet.list
   searchaddressesgets.each do |item|
-    puts "#{item["address"]}"
+    puts "#{item["Address"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AddressLookupServiceSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 searchaddressesget = client.SearchAddressesGet.list()
 puts searchaddressesget
 ```
@@ -238,8 +239,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `validation_information` |  |
+| `Address` |  |
+| `ValidationInformation` |  |
 
 Operations: List.
 
@@ -249,9 +250,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `SuggestedAddress` |  |
 | `n` |  |
 | `q` |  |
-| `suggested_address` |  |
 
 Operations: Create.
 
@@ -276,8 +277,8 @@ Create an instance: `search_addresses_get = client.SearchAddressesGet`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `Hash` |  |
-| `validation_information` | `Hash` |  |
+| `Address` | `Hash` |  |
+| `ValidationInformation` | `Hash` |  |
 
 #### Example: List
 
@@ -301,9 +302,9 @@ Create an instance: `search_addresses_post = client.SearchAddressesPost`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `SuggestedAddress` | `Array` |  |
 | `n` | `Integer` |  |
 | `q` | `String` |  |
-| `suggested_address` | `Array` |  |
 
 #### Example: Create
 

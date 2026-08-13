@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AddressLookupServiceControl
-from core.error import AddressLookupServiceError
-from core.result import AddressLookupServiceResult
-from core.spec import AddressLookupServiceSpec
+from addresslookupservice_sdk.config import make_config
+from addresslookupservice_sdk.features import _make_feature
+from addresslookupservice_sdk.core.control import AddressLookupServiceControl
+from addresslookupservice_sdk.core.error import AddressLookupServiceError
+from addresslookupservice_sdk.core.result import AddressLookupServiceResult
+from addresslookupservice_sdk.core.spec import AddressLookupServiceSpec
 
 
 # True when this SDK was generated with the named feature.

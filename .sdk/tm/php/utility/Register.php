@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ AddressLookupServiceUtility::setRegistrar(function (AddressLookupServiceUtility 
     $u->prepare_params = [AddressLookupServicePrepareParams::class, 'call'];
     $u->prepare_path = [AddressLookupServicePreparePath::class, 'call'];
     $u->prepare_query = [AddressLookupServicePrepareQuery::class, 'call'];
+    $u->graphql_body = [AddressLookupServiceGraphql::class, 'body'];
+    $u->graphql_errors = [AddressLookupServiceGraphql::class, 'errors'];
     $u->result_basic = [AddressLookupServiceResultBasic::class, 'call'];
     $u->result_body = [AddressLookupServiceResultBody::class, 'call'];
     $u->result_headers = [AddressLookupServiceResultHeaders::class, 'call'];

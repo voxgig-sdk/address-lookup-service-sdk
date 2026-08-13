@@ -8,6 +8,7 @@ guide: {
   entity: search_addresses_get: {
     path: "/": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.SuggestedAddress`")|top
     }
   }
 

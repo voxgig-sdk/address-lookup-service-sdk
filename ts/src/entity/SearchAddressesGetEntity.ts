@@ -37,7 +37,7 @@ class SearchAddressesGetEntity extends AddressLookupServiceEntityBase<SearchAddr
 
 
 
-  async list(this: any, reqmatch?: SearchAddressesGetListMatch, ctrl?: Control): Promise<SearchAddressesGet[]> {
+  async list(this: any, reqmatch?: SearchAddressesGetListMatch, ctrl?: Control): Promise<SearchAddressesGetEntity[]> {
 
     const utility = this._utility
 

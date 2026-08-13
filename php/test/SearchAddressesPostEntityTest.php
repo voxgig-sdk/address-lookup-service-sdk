@@ -33,7 +33,7 @@ class SearchAddressesPostEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -44,7 +44,7 @@ class SearchAddressesPostEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.search_addresses_post"), "search_addresses_post_ref01"));
 
         $search_addresses_post_ref01_data_result = $search_addresses_post_ref01_ent->create($search_addresses_post_ref01_data, null);
-        $search_addresses_post_ref01_data = Helpers::to_map($search_addresses_post_ref01_data_result);
+        $search_addresses_post_ref01_data = Helpers::to_map(is_object($search_addresses_post_ref01_data_result) && method_exists($search_addresses_post_ref01_data_result, 'data_get') ? $search_addresses_post_ref01_data_result->data_get() : $search_addresses_post_ref01_data_result);
         $this->assertNotNull($search_addresses_post_ref01_data);
 
     }
@@ -72,22 +72,22 @@ function search_addresses_post_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID");
+    $entid_env_raw = getenv("ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID" => $idmap,
-        "ADDRESSLOOKUPSERVICE_TEST_LIVE" => "FALSE",
-        "ADDRESSLOOKUPSERVICE_TEST_EXPLAIN" => "FALSE",
+        "ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID" => $idmap,
+        "ADDRESS_LOOKUP_SERVICE_TEST_LIVE" => "FALSE",
+        "ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID"]);
+        $env["ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_POST_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] === "TRUE") {
+    if ($env["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -96,13 +96,13 @@ function search_addresses_post_basic_setup($extra)
         $client = new AddressLookupServiceSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] === "TRUE";
+    $live = $env["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["ADDRESSLOOKUPSERVICE_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

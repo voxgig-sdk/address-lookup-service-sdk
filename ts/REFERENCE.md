@@ -128,8 +128,8 @@ const search_addresses_get = client.SearchAddressesGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `Record<string, any>` | No |  |
-| `validation_information` | `Record<string, any>` | No |  |
+| `Address` | `Record<string, any>` | No |  |
+| `ValidationInformation` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -179,9 +179,9 @@ const search_addresses_post = client.SearchAddressesPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `SuggestedAddress` | `any[]` | No |  |
 | `n` | `number` | No |  |
 | `q` | `string` | Yes |  |
-| `suggested_address` | `any[]` | No |  |
 
 ### Operations
 

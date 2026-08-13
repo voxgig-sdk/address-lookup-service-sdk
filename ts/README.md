@@ -35,7 +35,9 @@ const client = new AddressLookupServiceSDK()
 
 ### 2. List searchaddressesget records
 
-`list()` resolves to an array of SearchAddressesGet objects — iterate it directly:
+`list()` resolves to an array of SearchAddressesGet ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const searchaddressesgets = await client.SearchAddressesGet().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = AddressLookupServiceSDK.test()
 
 const searchaddressesget = await client.SearchAddressesGet().list()
-// searchaddressesget is a bare entity populated with mock response data
+// searchaddressesget is the entity, populated with mock response data
+// — call searchaddressesget.data() for the record itself
 console.log(searchaddressesget)
 ```
 
@@ -287,8 +290,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `validation_information` |  |
+| `Address` |  |
+| `ValidationInformation` |  |
 
 Operations: list.
 
@@ -298,9 +301,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `SuggestedAddress` |  |
 | `n` |  |
 | `q` |  |
-| `suggested_address` |  |
 
 Operations: create.
 
@@ -325,8 +328,8 @@ Create an instance: `const search_addresses_get = client.SearchAddressesGet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `Record<string, any>` |  |
-| `validation_information` | `Record<string, any>` |  |
+| `Address` | `Record<string, any>` |  |
+| `ValidationInformation` | `Record<string, any>` |  |
 
 #### Example: List
 
@@ -349,9 +352,9 @@ Create an instance: `const search_addresses_post = client.SearchAddressesPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `SuggestedAddress` | `any[]` |  |
 | `n` | `number` |  |
 | `q` | `string` |  |
-| `suggested_address` | `any[]` |  |
 
 #### Example: Create
 

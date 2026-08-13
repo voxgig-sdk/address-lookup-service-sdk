@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from addresslookupservice_sdk.utility.voxgig_struct import voxgig_struct as vs
 from addresslookupservice_sdk import AddressLookupServiceSDK
-from core import helpers
+from addresslookupservice_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _search_addresses_get_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID": {},
-        "ADDRESSLOOKUPSERVICE_TEST_LIVE": "FALSE",
+        "ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID": {},
+        "ADDRESS_LOOKUP_SERVICE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ADDRESSLOOKUPSERVICE_TEST_LIVE") == "TRUE"
+    live = env.get("ADDRESS_LOOKUP_SERVICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -91,8 +91,8 @@ search_addresses_get = client.SearchAddressesGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `dict` | No |  |
-| `validation_information` | `dict` | No |  |
+| `Address` | `dict` | No |  |
+| `ValidationInformation` | `dict` | No |  |
 
 ### Operations
 
@@ -145,9 +145,9 @@ search_addresses_post = client.SearchAddressesPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `SuggestedAddress` | `list` | No |  |
 | `n` | `int` | No |  |
 | `q` | `str` | Yes |  |
-| `suggested_address` | `list` | No |  |
 
 ### Operations
 

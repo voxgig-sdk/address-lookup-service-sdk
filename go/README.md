@@ -263,8 +263,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"address"` |  |
-| `"validation_information"` |  |
+| `"Address"` |  |
+| `"ValidationInformation"` |  |
 
 Operations: List.
 
@@ -274,9 +274,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `"SuggestedAddress"` |  |
 | `"n"` |  |
 | `"q"` |  |
-| `"suggested_address"` |  |
 
 Operations: Create.
 
@@ -301,8 +301,8 @@ Create an instance: `searchAddressesGet := client.SearchAddressesGet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `map[string]any` |  |
-| `validation_information` | `map[string]any` |  |
+| `Address` | `map[string]any` |  |
+| `ValidationInformation` | `map[string]any` |  |
 
 #### Example: List
 
@@ -329,9 +329,9 @@ Create an instance: `searchAddressesPost := client.SearchAddressesPost(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `SuggestedAddress` | `[]any` |  |
 | `n` | `int` |  |
 | `q` | `string` |  |
-| `suggested_address` | `[]any` |  |
 
 #### Example: Create
 

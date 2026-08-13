@@ -43,8 +43,8 @@ class AddressLookupServiceTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ADDRESSLOOKUPSERVICE_TEST_LIVE');
-        $override = self::getenv('ADDRESSLOOKUPSERVICE_TEST_OVERRIDE');
+        $live = self::getenv('ADDRESS_LOOKUP_SERVICE_TEST_LIVE');
+        $override = self::getenv('ADDRESS_LOOKUP_SERVICE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class AddressLookupServiceTestRunner
             }
         }
 
-        $explain = self::getenv('ADDRESSLOOKUPSERVICE_TEST_EXPLAIN');
+        $explain = self::getenv('ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ADDRESSLOOKUPSERVICE_TEST_EXPLAIN'] = $explain;
+            $m['ADDRESS_LOOKUP_SERVICE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

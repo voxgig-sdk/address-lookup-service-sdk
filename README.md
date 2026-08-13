@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AddressLookupServiceSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AddressLookupServiceSDK.test({
+  entity: {
+    search_addresses_get: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const searchaddressesgets = await client.SearchAddressesGet().list()
-// searchaddressesgets is an array of bare SearchAddressesGet records populated with mock data
+// searchaddressesgets is an array of SearchAddressesGet entities, populated with mock data
+// — call searchaddressesgets[0].data() for the record itself
 console.log(searchaddressesgets)
 ```
 
@@ -110,7 +119,7 @@ import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
 
 const client = new AddressLookupServiceSDK()
 
-// List all searchaddressesgets (returns SearchAddressesGet[])
+// List all searchaddressesgets (returns SearchAddressesGetEntity[] — .data() for the record)
 const searchaddressesgets = await client.SearchAddressesGet().list()
 for (const searchaddressesget of searchaddressesgets) {
   console.log(searchaddressesget)
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://data.gov.hk](https://data.gov.hk)
 

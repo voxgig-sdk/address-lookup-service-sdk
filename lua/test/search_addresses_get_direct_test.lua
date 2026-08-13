@@ -61,11 +61,11 @@ function search_addresses_get_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ADDRESSLOOKUPSERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID"] = {},
-    ["ADDRESSLOOKUPSERVICE_TEST_LIVE"] = "FALSE",
+    ["ADDRESS_LOOKUP_SERVICE_TEST_SEARCH_ADDRESSES_GET_ENTID"] = {},
+    ["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ADDRESSLOOKUPSERVICE_TEST_LIVE"] == "TRUE"
+  local live = env["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

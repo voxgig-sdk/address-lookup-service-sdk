@@ -16,11 +16,11 @@
 import pytest
 
 from addresslookupservice_sdk import AddressLookupServiceSDK
-from core.error import AddressLookupServiceError
-from core.result import AddressLookupServiceResult
-from core.response import AddressLookupServiceResponse
-from core.spec import AddressLookupServiceSpec
-from feature.base_feature import AddressLookupServiceBaseFeature
+from addresslookupservice_sdk.core.error import AddressLookupServiceError
+from addresslookupservice_sdk.core.result import AddressLookupServiceResult
+from addresslookupservice_sdk.core.response import AddressLookupServiceResponse
+from addresslookupservice_sdk.core.spec import AddressLookupServiceSpec
+from addresslookupservice_sdk.feature.base_feature import AddressLookupServiceBaseFeature
 
 
 def _client():
