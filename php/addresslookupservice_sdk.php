@@ -40,7 +40,7 @@ class AddressLookupServiceSDK
         $utility = new AddressLookupServiceUtility();
         $this->_utility = $utility;
 
-        $config = AddressLookupServiceConfig::make_config();
+        $config = AddressLookupServiceConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

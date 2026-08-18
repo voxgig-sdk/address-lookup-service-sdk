@@ -1,6 +1,20 @@
 # AddressLookupService SDK configuration
 
 module AddressLookupServiceConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -27,18 +41,12 @@ module AddressLookupServiceConfig
         "search_addresses_get" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "Address",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "ValidationInformation",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
           ],
           "name" => "search_addresses_get",
@@ -48,20 +56,16 @@ module AddressLookupServiceConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => 10,
                         "kind" => "query",
                         "name" => "n",
                         "orig" => "n",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "香港中環皇后大道中1號",
                         "kind" => "query",
                         "name" => "q",
@@ -85,10 +89,8 @@ module AddressLookupServiceConfig
                     "req" => "`reqdata`",
                     "res" => "`body.SuggestedAddress`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -98,25 +100,17 @@ module AddressLookupServiceConfig
         "search_addresses_post" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "SuggestedAddress",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "n",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "q",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "search_addresses_post",
@@ -126,7 +120,6 @@ module AddressLookupServiceConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -137,10 +130,8 @@ module AddressLookupServiceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {

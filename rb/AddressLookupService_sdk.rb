@@ -28,7 +28,7 @@ class AddressLookupServiceSDK
     utility = AddressLookupServiceUtility.new
     @_utility = utility
 
-    config = AddressLookupServiceConfig.make_config
+    config = AddressLookupServiceConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

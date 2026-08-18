@@ -23,8 +23,8 @@ class AddressLookupServiceSDK:
         utility = AddressLookupServiceUtility()
         self._utility = utility
 
-        from addresslookupservice_sdk.config import make_config
-        config = make_config()
+        from addresslookupservice_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

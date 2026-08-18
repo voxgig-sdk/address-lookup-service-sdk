@@ -23,6 +23,7 @@ build = {
   modules = {
     ["address-lookup-service_sdk"] = "address-lookup-service_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

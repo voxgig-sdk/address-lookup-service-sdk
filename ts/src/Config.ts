@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://www.als.ogcio.gov.hk/lookup',
+    base: "https://www.als.ogcio.gov.hk/lookup",
 
     headers: {
       "content-type": "application/json"
@@ -58,18 +58,12 @@ class Config {
     "search_addresses_get": {
       "fields": [
         {
-          "active": true,
           "name": "Address",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "ValidationInformation",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         }
       ],
       "name": "search_addresses_get",
@@ -79,20 +73,16 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": 10,
                     "kind": "query",
                     "name": "n",
                     "orig": "n",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "香港中環皇后大道中1號",
                     "kind": "query",
                     "name": "q",
@@ -115,11 +105,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.SuggestedAddress`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -129,25 +117,17 @@ class Config {
     "search_addresses_post": {
       "fields": [
         {
-          "active": true,
           "name": "SuggestedAddress",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "n",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "q",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         }
       ],
       "name": "search_addresses_post",
@@ -157,7 +137,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -167,11 +146,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
