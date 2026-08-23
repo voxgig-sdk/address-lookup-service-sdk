@@ -149,9 +149,9 @@ $search_addresses_post = $client->SearchAddressesPost();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `SuggestedAddress` | `array` | No |  |
-| `n` | `int` | No |  |
-| `q` | `string` | Yes |  |
+| `SuggestedAddress` | `array` | No | List of suggested addresses matching the query |
+| `n` | `int` | No | Number of records to return |
+| `q` | `string` | Yes | Free-text address query string |
 
 ### Operations
 

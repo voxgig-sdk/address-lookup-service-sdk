@@ -107,18 +107,21 @@
               "active": true,
               "name": "SuggestedAddress",
               "req": false,
+              "short": "List of suggested addresses matching the query",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "n",
               "req": false,
+              "short": "Number of records to return",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "q",
               "req": true,
+              "short": "Free-text address query string",
               "type": "`$STRING`"
             }
           ],

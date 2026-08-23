@@ -245,9 +245,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `SuggestedAddress` |  |
-| `n` |  |
-| `q` |  |
+| `SuggestedAddress` | List of suggested addresses matching the query |
+| `n` | Number of records to return |
+| `q` | Free-text address query string |
 
 Operations: Create.
 
@@ -296,9 +296,9 @@ Create an instance: `local search_addresses_post = client:SearchAddressesPost(ni
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `SuggestedAddress` | `table` |  |
-| `n` | `number` |  |
-| `q` | `string` |  |
+| `SuggestedAddress` | `table` | List of suggested addresses matching the query |
+| `n` | `number` | Number of records to return |
+| `q` | `string` | Free-text address query string |
 
 #### Example: Create
 

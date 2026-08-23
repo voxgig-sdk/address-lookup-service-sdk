@@ -154,9 +154,9 @@ fmt.Println(searchAddressesPost.GetName()) // "search_addresses_post"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `SuggestedAddress` | `[]any` | No |  |
-| `n` | `int` | No |  |
-| `q` | `string` | Yes |  |
+| `SuggestedAddress` | `[]any` | No | List of suggested addresses matching the query |
+| `n` | `int` | No | Number of records to return |
+| `q` | `string` | Yes | Free-text address query string |
 
 ### Operations
 

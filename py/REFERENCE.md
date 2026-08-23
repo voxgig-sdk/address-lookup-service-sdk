@@ -145,9 +145,9 @@ search_addresses_post = client.SearchAddressesPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `SuggestedAddress` | `list` | No |  |
-| `n` | `int` | No |  |
-| `q` | `str` | Yes |  |
+| `SuggestedAddress` | `list` | No | List of suggested addresses matching the query |
+| `n` | `int` | No | Number of records to return |
+| `q` | `str` | Yes | Free-text address query string |
 
 ### Operations
 

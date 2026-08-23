@@ -256,9 +256,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `SuggestedAddress` |  |
-| `n` |  |
-| `q` |  |
+| `SuggestedAddress` | List of suggested addresses matching the query |
+| `n` | Number of records to return |
+| `q` | Free-text address query string |
 
 Operations: Create.
 
@@ -307,9 +307,9 @@ Create an instance: `search_addresses_post = client.SearchAddressesPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `SuggestedAddress` | `list` |  |
-| `n` | `int` |  |
-| `q` | `str` |  |
+| `SuggestedAddress` | `list` | List of suggested addresses matching the query |
+| `n` | `int` | Number of records to return |
+| `q` | `str` | Free-text address query string |
 
 #### Example: Create
 

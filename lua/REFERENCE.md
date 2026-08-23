@@ -147,9 +147,9 @@ local search_addresses_post = client:SearchAddressesPost(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `SuggestedAddress` | `table` | No |  |
-| `n` | `number` | No |  |
-| `q` | `string` | Yes |  |
+| `SuggestedAddress` | `table` | No | List of suggested addresses matching the query |
+| `n` | `number` | No | Number of records to return |
+| `q` | `string` | Yes | Free-text address query string |
 
 ### Operations
 

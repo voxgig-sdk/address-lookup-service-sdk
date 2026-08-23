@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'AddressLookupService',
+        slug: "address-lookup-service",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -118,15 +129,18 @@ class Config {
       "fields": [
         {
           "name": "SuggestedAddress",
+          "short": "List of suggested addresses matching the query",
           "type": "`$ARRAY`"
         },
         {
           "name": "n",
+          "short": "Number of records to return",
           "type": "`$INTEGER`"
         },
         {
           "name": "q",
           "req": true,
+          "short": "Free-text address query string",
           "type": "`$STRING`"
         }
       ],

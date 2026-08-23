@@ -19,6 +19,9 @@ module AddressLookupServiceConfig
     {
       "main" => {
         "name" => "AddressLookupService",
+        "slug" => "address-lookup-service",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -101,15 +104,18 @@ module AddressLookupServiceConfig
           "fields" => [
             {
               "name" => "SuggestedAddress",
+              "short" => "List of suggested addresses matching the query",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "n",
+              "short" => "Number of records to return",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "q",
               "req" => true,
+              "short" => "Free-text address query string",
               "type" => "`$STRING`",
             },
           ],

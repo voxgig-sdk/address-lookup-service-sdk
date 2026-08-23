@@ -8,16 +8,19 @@ main: kit: entity: search_addresses_post: {
     {
       name: "SuggestedAddress"
       req: false
+      short: "List of suggested addresses matching the query"
       type: "`$ARRAY`"
     }
     {
       name: "n"
       req: false
+      short: "Number of records to return"
       type: "`$INTEGER`"
     }
     {
       name: "q"
       req: true
+      short: "Free-text address query string"
       type: "`$STRING`"
     }
   ]

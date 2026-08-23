@@ -6,7 +6,7 @@ The Golang SDK for the AddressLookupService API — an entity-oriented client us
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.SearchAddressesGet(nil)` — each with the same small set of operations (`List`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -274,9 +274,9 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `"SuggestedAddress"` |  |
-| `"n"` |  |
-| `"q"` |  |
+| `"SuggestedAddress"` | List of suggested addresses matching the query |
+| `"n"` | Number of records to return |
+| `"q"` | Free-text address query string |
 
 Operations: Create.
 
@@ -329,9 +329,9 @@ Create an instance: `searchAddressesPost := client.SearchAddressesPost(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `SuggestedAddress` | `[]any` |  |
-| `n` | `int` |  |
-| `q` | `string` |  |
+| `SuggestedAddress` | `[]any` | List of suggested addresses matching the query |
+| `n` | `int` | Number of records to return |
+| `q` | `string` | Free-text address query string |
 
 #### Example: Create
 

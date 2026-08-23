@@ -179,9 +179,9 @@ const search_addresses_post = client.SearchAddressesPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `SuggestedAddress` | `any[]` | No |  |
-| `n` | `number` | No |  |
-| `q` | `string` | Yes |  |
+| `SuggestedAddress` | `any[]` | No | List of suggested addresses matching the query |
+| `n` | `number` | No | Number of records to return |
+| `q` | `string` | Yes | Free-text address query string |
 
 ### Operations
 

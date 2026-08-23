@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "AddressLookupService",
+			"slug": "address-lookup-service",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -93,15 +96,18 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "SuggestedAddress",
+						"short": "List of suggested addresses matching the query",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "n",
+						"short": "Number of records to return",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "q",
 						"req": true,
+						"short": "Free-text address query string",
 						"type": "`$STRING`",
 					},
 				},
