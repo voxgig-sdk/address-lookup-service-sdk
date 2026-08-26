@@ -28,6 +28,7 @@ module AddressLookupServiceConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
