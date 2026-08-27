@@ -22,8 +22,8 @@ class SearchAddressesGet
 /** Request payload for SearchAddressesGet#list. */
 class SearchAddressesGetListMatch
 {
-    public ?array $Address = null;
-    public ?array $ValidationInformation = null;
+    public ?int $n = null;
+    public string $q;
 }
 
 /** SearchAddressesPost entity data model. */

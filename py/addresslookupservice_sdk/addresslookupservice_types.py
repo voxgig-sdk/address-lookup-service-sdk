@@ -21,9 +21,12 @@ class SearchAddressesGet(TypedDict, total=False):
     ValidationInformation: dict
 
 
-class SearchAddressesGetListMatch(TypedDict, total=False):
-    Address: dict
-    ValidationInformation: dict
+class SearchAddressesGetListMatchRequired(TypedDict):
+    q: str
+
+
+class SearchAddressesGetListMatch(SearchAddressesGetListMatchRequired, total=False):
+    n: int
 
 
 class SearchAddressesPostRequired(TypedDict):

@@ -11,8 +11,8 @@
 ---@field ValidationInformation? table
 
 ---@class SearchAddressesGetListMatch
----@field Address? table
----@field ValidationInformation? table
+---@field n? number
+---@field q string
 
 ---@class SearchAddressesPost
 ---@field SuggestedAddress? table

@@ -20,8 +20,8 @@ type SearchAddressesGet struct {
 
 // SearchAddressesGetListMatch is the typed request payload for SearchAddressesGet.ListTyped.
 type SearchAddressesGetListMatch struct {
-	Address *map[string]any `json:"Address,omitempty"`
-	ValidationInformation *map[string]any `json:"ValidationInformation,omitempty"`
+	N *int `json:"n,omitempty"`
+	Q string `json:"q"`
 }
 
 // SearchAddressesPost is the typed data model for the search_addresses_post entity.

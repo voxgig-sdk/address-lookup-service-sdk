@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    searchaddressesgets = client.SearchAddressesGet().list()
+    searchaddressesgets = client.SearchAddressesGet().list({"q": "example"})
     for searchaddressesget in searchaddressesgets:
         print(searchaddressesget)
 except Exception as err:
@@ -289,7 +289,7 @@ Create an instance: `search_addresses_get = client.SearchAddressesGet()`
 #### Example: List
 
 ```python
-search_addresses_gets = client.SearchAddressesGet().list()
+search_addresses_gets = client.SearchAddressesGet().list({"q": "example"})
 ```
 
 
@@ -318,6 +318,29 @@ search_addresses_post = client.SearchAddressesPost().create({
     "q": "example_q",  # str
 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

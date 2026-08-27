@@ -11,8 +11,8 @@ export interface SearchAddressesGet {
 }
 
 export interface SearchAddressesGetListMatch {
-  Address?: Record<string, any>
-  ValidationInformation?: Record<string, any>
+  n?: number
+  q: string
 }
 
 export interface SearchAddressesPost {

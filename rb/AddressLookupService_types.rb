@@ -23,14 +23,14 @@ SearchAddressesGet = Struct.new(
 
 # Request payload for SearchAddressesGet#list.
 #
-# @!attribute [rw] Address
-#   @return [Hash, nil]
+# @!attribute [rw] n
+#   @return [Integer, nil]
 #
-# @!attribute [rw] ValidationInformation
-#   @return [Hash, nil]
+# @!attribute [rw] q
+#   @return [String]
 SearchAddressesGetListMatch = Struct.new(
-  :Address,
-  :ValidationInformation,
+  :n,
+  :q,
   keyword_init: true
 )
 
