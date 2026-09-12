@@ -52,7 +52,7 @@ func TestSearchAddressesPostEntity(t *testing.T) {
 		// CREATE
 		searchAddressesPostRef01Ent := client.SearchAddressesPost(nil)
 		searchAddressesPostRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "search_addresses_post"}, setup.data), "search_addresses_post_ref01"))
+			vs.GetPath(setup.data, []any{"new", "search_addresses_post"}), "search_addresses_post_ref01"))
 
 		searchAddressesPostRef01DataResult, err := searchAddressesPostRef01Ent.Create(searchAddressesPostRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func search_addresses_postBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"search_addresses_post01", "search_addresses_post02", "search_addresses_post03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -118,10 +118,22 @@ func search_addresses_postBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["ADDRESS_LOOKUP_SERVICE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewAddressLookupServiceSDK(core.ToMapAny(mergedOpts))
 	}

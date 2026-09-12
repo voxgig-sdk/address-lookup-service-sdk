@@ -82,7 +82,7 @@ module AddressLookupServiceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {
                     "exist" => [
                       "n",
@@ -93,6 +93,7 @@ module AddressLookupServiceConfig
                     "req" => "`reqdata`",
                     "res" => "`body.SuggestedAddress`",
                   },
+                  "parts" => [],
                 },
               ],
             },
@@ -131,12 +132,13 @@ module AddressLookupServiceConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },

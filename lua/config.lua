@@ -70,7 +70,7 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
-                ["parts"] = {},
+                ["segments"] = {},
                 ["select"] = {
                   ["exist"] = {
                     "n",
@@ -81,6 +81,7 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.SuggestedAddress`",
                 },
+                ["parts"] = {},
               },
             },
           },
@@ -119,12 +120,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/",
-                ["parts"] = {},
+                ["segments"] = {},
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {},
               },
             },
           },
