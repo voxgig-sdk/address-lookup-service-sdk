@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
+import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service-sdk'
 
 const client = new AddressLookupServiceSDK()
 ```
@@ -447,7 +447,7 @@ address-lookup-service/
 Import the SDK from the package root:
 
 ```ts
-import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
+import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service-sdk'
 ```
 
 ### Entity state

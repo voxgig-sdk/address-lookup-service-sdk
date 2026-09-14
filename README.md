@@ -105,7 +105,7 @@ local results, err = client:SearchAddressesGet():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
+| TypeScript | `@voxgig-sdk/address-lookup-service-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
 | Python | `voxgig-sdk-address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
 | PHP | `voxgig-sdk/address-lookup-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/address-lookup-service-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/address-lookup-service-sdk/go` | `go get github.com/voxgig-sdk/address-lookup-service-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:SearchAddressesGet():list()
 ### TypeScript
 
 ```ts
-import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service'
+import { AddressLookupServiceSDK } from '@voxgig-sdk/address-lookup-service-sdk'
 
 const client = new AddressLookupServiceSDK()
 
